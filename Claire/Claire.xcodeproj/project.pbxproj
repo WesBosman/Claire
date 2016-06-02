@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B93F1D00CD0700401332 /* AppDelegate.swift */; };
+		DE96B9421D00CD0700401332 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B9411D00CD0700401332 /* ViewController.swift */; };
+		DE96B9451D00CD0700401332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9431D00CD0700401332 /* Main.storyboard */; };
+		DE96B9471D00CD0700401332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9461D00CD0700401332 /* Assets.xcassets */; };
+		DE96B94A1D00CD0700401332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */; };
+		DE96B9551D00CD0700401332 /* ClaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B9541D00CD0700401332 /* ClaireTests.swift */; };
+		DE96B9601D00CD0700401332 /* ClaireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B95F1D00CD0700401332 /* ClaireUITests.swift */; };
+		DE96B96E1D00D4B000401332 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B96D1D00D4B000401332 /* TableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE96B9511D00CD0700401332 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE96B9341D00CD0700401332 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE96B93B1D00CD0700401332;
+			remoteInfo = Claire;
+		};
+		DE96B95C1D00CD0700401332 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE96B9341D00CD0700401332 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE96B93B1D00CD0700401332;
+			remoteInfo = Claire;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DE96B93C1D00CD0700401332 /* Claire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE96B93F1D00CD0700401332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DE96B9411D00CD0700401332 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE96B9441D00CD0700401332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE96B9461D00CD0700401332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE96B9491D00CD0700401332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE96B94B1D00CD0700401332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE96B9501D00CD0700401332 /* ClaireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE96B9541D00CD0700401332 /* ClaireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaireTests.swift; sourceTree = "<group>"; };
+		DE96B9561D00CD0700401332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE96B95B1D00CD0700401332 /* ClaireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE96B95F1D00CD0700401332 /* ClaireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaireUITests.swift; sourceTree = "<group>"; };
+		DE96B9611D00CD0700401332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE96B96D1D00D4B000401332 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE96B9391D00CD0700401332 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE96B94D1D00CD0700401332 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE96B9581D00CD0700401332 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE96B9331D00CD0700401332 = {
+			isa = PBXGroup;
+			children = (
+				DE96B93E1D00CD0700401332 /* Claire */,
+				DE96B9531D00CD0700401332 /* ClaireTests */,
+				DE96B95E1D00CD0700401332 /* ClaireUITests */,
+				DE96B93D1D00CD0700401332 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE96B93D1D00CD0700401332 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE96B93C1D00CD0700401332 /* Claire.app */,
+				DE96B9501D00CD0700401332 /* ClaireTests.xctest */,
+				DE96B95B1D00CD0700401332 /* ClaireUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE96B93E1D00CD0700401332 /* Claire */ = {
+			isa = PBXGroup;
+			children = (
+				DE96B93F1D00CD0700401332 /* AppDelegate.swift */,
+				DE96B96D1D00D4B000401332 /* TableViewController.swift */,
+				DE96B9411D00CD0700401332 /* ViewController.swift */,
+				DE96B9431D00CD0700401332 /* Main.storyboard */,
+				DE96B9461D00CD0700401332 /* Assets.xcassets */,
+				DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */,
+				DE96B94B1D00CD0700401332 /* Info.plist */,
+			);
+			path = Claire;
+			sourceTree = "<group>";
+		};
+		DE96B9531D00CD0700401332 /* ClaireTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE96B9541D00CD0700401332 /* ClaireTests.swift */,
+				DE96B9561D00CD0700401332 /* Info.plist */,
+			);
+			path = ClaireTests;
+			sourceTree = "<group>";
+		};
+		DE96B95E1D00CD0700401332 /* ClaireUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DE96B95F1D00CD0700401332 /* ClaireUITests.swift */,
+				DE96B9611D00CD0700401332 /* Info.plist */,
+			);
+			path = ClaireUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE96B93B1D00CD0700401332 /* Claire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE96B9641D00CD0700401332 /* Build configuration list for PBXNativeTarget "Claire" */;
+			buildPhases = (
+				DE96B9381D00CD0700401332 /* Sources */,
+				DE96B9391D00CD0700401332 /* Frameworks */,
+				DE96B93A1D00CD0700401332 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Claire;
+			productName = Claire;
+			productReference = DE96B93C1D00CD0700401332 /* Claire.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DE96B94F1D00CD0700401332 /* ClaireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE96B9671D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireTests" */;
+			buildPhases = (
+				DE96B94C1D00CD0700401332 /* Sources */,
+				DE96B94D1D00CD0700401332 /* Frameworks */,
+				DE96B94E1D00CD0700401332 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE96B9521D00CD0700401332 /* PBXTargetDependency */,
+			);
+			name = ClaireTests;
+			productName = ClaireTests;
+			productReference = DE96B9501D00CD0700401332 /* ClaireTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DE96B95A1D00CD0700401332 /* ClaireUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE96B96A1D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireUITests" */;
+			buildPhases = (
+				DE96B9571D00CD0700401332 /* Sources */,
+				DE96B9581D00CD0700401332 /* Frameworks */,
+				DE96B9591D00CD0700401332 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE96B95D1D00CD0700401332 /* PBXTargetDependency */,
+			);
+			name = ClaireUITests;
+			productName = ClaireUITests;
+			productReference = DE96B95B1D00CD0700401332 /* ClaireUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE96B9341D00CD0700401332 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Wes Bosman";
+				TargetAttributes = {
+					DE96B93B1D00CD0700401332 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					DE96B94F1D00CD0700401332 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = DE96B93B1D00CD0700401332;
+					};
+					DE96B95A1D00CD0700401332 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = DE96B93B1D00CD0700401332;
+					};
+				};
+			};
+			buildConfigurationList = DE96B9371D00CD0700401332 /* Build configuration list for PBXProject "Claire" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE96B9331D00CD0700401332;
+			productRefGroup = DE96B93D1D00CD0700401332 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE96B93B1D00CD0700401332 /* Claire */,
+				DE96B94F1D00CD0700401332 /* ClaireTests */,
+				DE96B95A1D00CD0700401332 /* ClaireUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE96B93A1D00CD0700401332 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE96B94A1D00CD0700401332 /* LaunchScreen.storyboard in Resources */,
+				DE96B9471D00CD0700401332 /* Assets.xcassets in Resources */,
+				DE96B9451D00CD0700401332 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE96B94E1D00CD0700401332 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE96B9591D00CD0700401332 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE96B9381D00CD0700401332 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE96B9421D00CD0700401332 /* ViewController.swift in Sources */,
+				DE96B96E1D00D4B000401332 /* TableViewController.swift in Sources */,
+				DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE96B94C1D00CD0700401332 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE96B9551D00CD0700401332 /* ClaireTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE96B9571D00CD0700401332 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE96B9601D00CD0700401332 /* ClaireUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE96B9521D00CD0700401332 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE96B93B1D00CD0700401332 /* Claire */;
+			targetProxy = DE96B9511D00CD0700401332 /* PBXContainerItemProxy */;
+		};
+		DE96B95D1D00CD0700401332 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE96B93B1D00CD0700401332 /* Claire */;
+			targetProxy = DE96B95C1D00CD0700401332 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE96B9431D00CD0700401332 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE96B9441D00CD0700401332 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE96B9491D00CD0700401332 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE96B9621D00CD0700401332 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE96B9631D00CD0700401332 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE96B9651D00CD0700401332 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Claire/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Wes.Claire;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DE96B9661D00CD0700401332 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Claire/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Wes.Claire;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DE96B9681D00CD0700401332 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ClaireTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Claire.app/Claire";
+			};
+			name = Debug;
+		};
+		DE96B9691D00CD0700401332 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ClaireTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Claire.app/Claire";
+			};
+			name = Release;
+		};
+		DE96B96B1D00CD0700401332 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ClaireUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Claire;
+			};
+			name = Debug;
+		};
+		DE96B96C1D00CD0700401332 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ClaireUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Claire;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE96B9371D00CD0700401332 /* Build configuration list for PBXProject "Claire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE96B9621D00CD0700401332 /* Debug */,
+				DE96B9631D00CD0700401332 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE96B9641D00CD0700401332 /* Build configuration list for PBXNativeTarget "Claire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE96B9651D00CD0700401332 /* Debug */,
+				DE96B9661D00CD0700401332 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DE96B9671D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE96B9681D00CD0700401332 /* Debug */,
+				DE96B9691D00CD0700401332 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DE96B96A1D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE96B96B1D00CD0700401332 /* Debug */,
+				DE96B96C1D00CD0700401332 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE96B9341D00CD0700401332 /* Project object */;
+}
