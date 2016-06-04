@@ -8,10 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var pickerView: UIPickerView!
-    
+class ViewController: UIViewController {    
     
     override func viewDidLoad() {
         super.viewDidLoad()

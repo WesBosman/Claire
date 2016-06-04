@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */; };
+		DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */; };
 		DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B93F1D00CD0700401332 /* AppDelegate.swift */; };
 		DE96B9421D00CD0700401332 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B9411D00CD0700401332 /* ViewController.swift */; };
 		DE96B9451D00CD0700401332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9431D00CD0700401332 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesPerDayTableViewController.swift; sourceTree = "<group>"; };
+		DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDaysTableViewController.swift; sourceTree = "<group>"; };
 		DE96B93C1D00CD0700401332 /* Claire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE96B93F1D00CD0700401332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE96B9411D00CD0700401332 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 			children = (
 				DE96B93F1D00CD0700401332 /* AppDelegate.swift */,
 				DE96B96D1D00D4B000401332 /* TableViewController.swift */,
+				DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */,
+				DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */,
 				DE96B9411D00CD0700401332 /* ViewController.swift */,
 				DE96B9431D00CD0700401332 /* Main.storyboard */,
 				DE96B9461D00CD0700401332 /* Assets.xcassets */,
@@ -260,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE96B9421D00CD0700401332 /* ViewController.swift in Sources */,
+				DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */,
 				DE96B96E1D00D4B000401332 /* TableViewController.swift in Sources */,
+				DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */,
 				DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +494,7 @@
 				DE96B9661D00CD0700401332 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE96B9671D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +503,7 @@
 				DE96B9691D00CD0700401332 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE96B96A1D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +512,7 @@
 				DE96B96C1D00CD0700401332 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

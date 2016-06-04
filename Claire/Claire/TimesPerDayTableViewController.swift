@@ -1,30 +1,37 @@
 //
-//  TableViewController.swift
+//  TimesPerDayTableViewController.swift
 //  Claire
 //
-//  Created by Wes Bosman on 6/2/16.
+//  Created by Wes Bosman on 6/4/16.
 //  Copyright © 2016 Wes Bosman. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController{
+class TimesPerDayTableViewController: UITableViewController {
+    @IBOutlet weak var timeOneSubtitle: UILabel!
+    @IBOutlet weak var timeOneDatePicker: UIDatePicker!
+    @IBOutlet weak var timeTwoSubtitle: UILabel!
+    @IBOutlet weak var timeTwoDatePicker: UIDatePicker!
+    private var timePickerOneIsHidden = false
+    private var timePickerTwoIsHidden = false
 
-    @IBOutlet weak var dayAndNightSwitch: UISwitch!
-    @IBOutlet weak var dietSwitch: UISwitch!
-    @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
-    private var timeToTakeMedicationHidden = false
-    private var medicationNameHidden = false
-    private var repeatingPickerHidden = false
-    @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
-    @IBOutlet weak var repeatRightDetail: UILabel!
-    @IBOutlet weak var medicationNameTextBox: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // We only want time for our date picker
-        //timeToTakeMedsRightDetail.text = ""
-        medicationNameTextBox.placeholder = "Name of Medication"
+        // Toggle time pickers
+        toggleTimeOnePicker()
+        toggleTimeTwoPicker()
+        
+        // Set the datepicker modes to time
+        timeOneDatePicker.datePickerMode = UIDatePickerMode.Time
+        timeTwoDatePicker.datePickerMode = UIDatePickerMode.Time
+        
+        //let timeFormat: NSDateFormatter = NSDateFormatter()
+        //timeFormat.dateFormat = "hh:mm"
+        //let time = "8:00"
+        //timeOneSubtitle.text = time
+        //timeTwoSubtitle.text = time
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,40 +40,48 @@ class TableViewController: UITableViewController{
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func toggleTimeOnePicker(){
+        timePickerOneIsHidden = !timePickerOneIsHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func toggleTimeTwoPicker(){
+        timePickerTwoIsHidden = !timePickerTwoIsHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /**
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Toggle the date picker to select a time to take the medication.
-        if indexPath.section == 1 && indexPath.row == 0{
-            toggleTakeMedicationPicker()
-        }
-        // Toggle the repeat picker
-        else if indexPath.section == 3 && indexPath.row == 0{
-            toggleRepeatingPicker()
-        }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Hide the time picker for the medication
-        if timeToTakeMedicationHidden && indexPath.section == 1 && indexPath.row == 1{
+        if timePickerOneIsHidden && indexPath.section == 1 && indexPath.row == 1{
             return 0
         }
-        // Hide the repeating picker
-        else if repeatingPickerHidden && indexPath.section == 3 && indexPath.row == 1{
+        else if timePickerTwoIsHidden && indexPath.section == 1 && indexPath.row == 3{
             return 0
         }
-        
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
-        
+        //else{
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        //}
     }
-    */
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 && indexPath.row == 0{
+            toggleTimeOnePicker()
+        }
+        else if indexPath.section == 1 && indexPath.row == 2{
+            toggleTimeTwoPicker()
+        }
+        else{
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
     // MARK: - Table view data source
-    /*
+    /**
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -76,7 +91,7 @@ class TableViewController: UITableViewController{
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-    */
+    **/
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

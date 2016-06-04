@@ -1,30 +1,17 @@
 //
-//  TableViewController.swift
+//  RepeatDaysTableViewController.swift
 //  Claire
 //
-//  Created by Wes Bosman on 6/2/16.
+//  Created by Wes Bosman on 6/4/16.
 //  Copyright © 2016 Wes Bosman. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController{
-
-    @IBOutlet weak var dayAndNightSwitch: UISwitch!
-    @IBOutlet weak var dietSwitch: UISwitch!
-    @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
-    private var timeToTakeMedicationHidden = false
-    private var medicationNameHidden = false
-    private var repeatingPickerHidden = false
-    @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
-    @IBOutlet weak var repeatRightDetail: UILabel!
-    @IBOutlet weak var medicationNameTextBox: UITextField!
-    
+class RepeatDaysTableViewController: UITableViewController {
+    var listOfDays:[String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        // We only want time for our date picker
-        //timeToTakeMedsRightDetail.text = ""
-        medicationNameTextBox.placeholder = "Name of Medication"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,37 +20,38 @@ class TableViewController: UITableViewController{
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    @IBAction func saveButtonIsPressed(sender: AnyObject) {
+        print(listOfDays)
+        // Want to send the array of days back to the original table view controller.
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /**
+    
+    // This turns the checkmarks on or off
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Toggle the date picker to select a time to take the medication.
-        if indexPath.section == 1 && indexPath.row == 0{
-            toggleTakeMedicationPicker()
+        let selection = tableView.cellForRowAtIndexPath(indexPath)
+        let day = selection?.textLabel?.text
+        
+        if selection?.accessoryType == UITableViewCellAccessoryType.Checkmark{
+            selection!.accessoryType = UITableViewCellAccessoryType.None
+            if listOfDays.contains(day!){
+                let index = listOfDays.indexOf(day!)
+                listOfDays.removeAtIndex(index!)
+                print("Remove \(day!) at index \(index!)")
+            }
         }
-        // Toggle the repeat picker
-        else if indexPath.section == 3 && indexPath.row == 0{
-            toggleRepeatingPicker()
+        else{
+            selection!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            listOfDays.append(day!)
+            print("Add \(day!)")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Hide the time picker for the medication
-        if timeToTakeMedicationHidden && indexPath.section == 1 && indexPath.row == 1{
-            return 0
-        }
-        // Hide the repeating picker
-        else if repeatingPickerHidden && indexPath.section == 3 && indexPath.row == 1{
-            return 0
-        }
-        
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         
     }
-    */
 
     // MARK: - Table view data source
     /*
@@ -74,19 +62,19 @@ class TableViewController: UITableViewController{
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return daysOfTheWeek.count
     }
-    */
-    /*
+     */
+    /**
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-
+        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         return cell
     }
-    */
-
+ */
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
