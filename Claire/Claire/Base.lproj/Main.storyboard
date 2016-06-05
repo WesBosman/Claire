@@ -197,7 +197,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Y9M-w9-25e" kind="show" id="ceV-33-HcG"/>
+                                            <segue destination="Wni-HO-WNQ" kind="show" id="DIR-zx-NUm"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -432,7 +432,7 @@
                         <sections>
                             <tableViewSection id="Wrq-qV-quF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="3ZB-c9-3Yi" style="IBUITableViewCellStyleDefault" id="VIV-Ap-yLS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="3ZB-c9-3Yi" style="IBUITableViewCellStyleDefault" id="VIV-Ap-yLS" userLabel="Monday">
                                         <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VIV-Ap-yLS" id="gZh-La-IMW">
@@ -449,7 +449,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="y9f-7g-h7R" style="IBUITableViewCellStyleDefault" id="do4-YR-eWi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="y9f-7g-h7R" style="IBUITableViewCellStyleDefault" id="do4-YR-eWi" userLabel="Tuesday">
                                         <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="do4-YR-eWi" id="rV7-SG-PeU">
@@ -466,7 +466,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="sFD-nC-2Wk" style="IBUITableViewCellStyleDefault" id="7OW-1R-193">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="sFD-nC-2Wk" style="IBUITableViewCellStyleDefault" id="7OW-1R-193" userLabel="Wednesday">
                                         <rect key="frame" x="0.0" y="152" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7OW-1R-193" id="ONb-Me-oqm">
@@ -483,7 +483,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="k8A-VI-UF5" style="IBUITableViewCellStyleDefault" id="NYd-gF-9Zf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="k8A-VI-UF5" style="IBUITableViewCellStyleDefault" id="NYd-gF-9Zf" userLabel="Thursday">
                                         <rect key="frame" x="0.0" y="196" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYd-gF-9Zf" id="MVh-BW-fW2">
@@ -500,7 +500,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="eSD-Ps-y40" style="IBUITableViewCellStyleDefault" id="NY6-OI-O5K">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="eSD-Ps-y40" style="IBUITableViewCellStyleDefault" id="NY6-OI-O5K" userLabel="Friday">
                                         <rect key="frame" x="0.0" y="240" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NY6-OI-O5K" id="NZi-tn-Nsn">
@@ -517,7 +517,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="pBf-3K-Vdl" style="IBUITableViewCellStyleDefault" id="xWQ-bD-Iab">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="pBf-3K-Vdl" style="IBUITableViewCellStyleDefault" id="xWQ-bD-Iab" userLabel="Saturday">
                                         <rect key="frame" x="0.0" y="284" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xWQ-bD-Iab" id="GKj-bn-5E4">
@@ -534,7 +534,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="4f6-y9-UJs" style="IBUITableViewCellStyleDefault" id="DbO-UB-7PI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="4f6-y9-UJs" style="IBUITableViewCellStyleDefault" id="DbO-UB-7PI" userLabel="Sunday">
                                         <rect key="frame" x="0.0" y="328" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DbO-UB-7PI" id="FtI-IN-oTW">
@@ -560,10 +560,10 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Add Days" id="TKU-Q3-697">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="ycJ-NA-ga3">
+                    <navigationItem key="navigationItem" title="Add Days" id="mo6-DB-3BE">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="WGk-W2-ExL">
                             <connections>
-                                <action selector="saveButtonIsPressed:" destination="Wni-HO-WNQ" id="MFv-ka-loB"/>
+                                <action selector="saveButtonPressed:" destination="Wni-HO-WNQ" id="l86-2a-9Se"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -571,7 +571,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXH-yf-hpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3570" y="178"/>
+            <point key="canvasLocation" x="2758" y="490"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nc9-lN-nva">
@@ -590,24 +590,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOz-cg-LQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="502" y="153"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="la7-5r-39M">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y9M-w9-25e" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VE9-8D-16c">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Wni-HO-WNQ" kind="relationship" relationship="rootViewController" id="eGK-Re-UHx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sIx-Hq-4t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2758" y="178"/>
         </scene>
     </scenes>
 </document>

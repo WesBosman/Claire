@@ -9,22 +9,27 @@
 import UIKit
 
 class RepeatDaysTableViewController: UITableViewController {
-    var listOfDays:[String] = []
+    var listOfDays = Set<String>()
+    var listOfDaysAsString: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Doesn't work.
+        //self.navigationItem.rightBarButtonItem?.title = "Save"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    @IBAction func saveButtonIsPressed(sender: AnyObject) {
-        print(listOfDays)
-        // Want to send the array of days back to the original table view controller.
-        
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        //let previousView = TableViewController()
+        //previousView.repeatRightDetail.text! = listOfDaysAsString
+        self.navigationController?.popViewControllerAnimated(true)
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,7 +40,7 @@ class RepeatDaysTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selection = tableView.cellForRowAtIndexPath(indexPath)
         let day = selection?.textLabel?.text
-        
+        // IF the accessory type is a checkmark turn it off and remove the day from the set
         if selection?.accessoryType == UITableViewCellAccessoryType.Checkmark{
             selection!.accessoryType = UITableViewCellAccessoryType.None
             if listOfDays.contains(day!){
@@ -44,9 +49,10 @@ class RepeatDaysTableViewController: UITableViewController {
                 print("Remove \(day!) at index \(index!)")
             }
         }
+        // Otherwise turn the checkmark on and add the day to the set
         else{
             selection!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            listOfDays.append(day!)
+            listOfDays.insert(day!)
             print("Add \(day!)")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -110,14 +116,18 @@ class RepeatDaysTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "returnFromAddDaysSegue"{
+            let destination = segue.destinationViewController as! TableViewController
+            destination.repeatRightDetail?.text = listOfDaysAsString
+        }
     }
-    */
-
+    
+    
 }
