@@ -13,28 +13,35 @@ class TimesPerDayTableViewController: UITableViewController {
     @IBOutlet weak var timeOneDatePicker: UIDatePicker!
     @IBOutlet weak var timeTwoSubtitle: UILabel!
     @IBOutlet weak var timeTwoDatePicker: UIDatePicker!
+    private var timeOneTitleIsHidden = false
+    private var timeTwoTitleIsHidden = false
+    private var timeThreeTitleIsHidden = false
     private var timePickerOneIsHidden = false
     private var timePickerTwoIsHidden = false
-    var daysSelected = []
+    private var timePickerThreeIsHidden = false
+    private var daysSelected = []
+    @IBOutlet weak var timeThreeDatePicker: UIDatePicker!
+    @IBOutlet weak var timeThreeSubtitle: UILabel!
+    let timeFormat: NSDateFormatter = NSDateFormatter()
+    private let date = NSDate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Toggle time pickers
+        toggleTimeOneTitle()
+        toggleTimeTwoTitle()
+        toggleTimeThreeTitle()
         toggleTimeOnePicker()
         toggleTimeTwoPicker()
+        toggleTimeThreePicker()
         
         // Set the datepicker modes to time
         timeOneDatePicker.datePickerMode = UIDatePickerMode.Time
         timeTwoDatePicker.datePickerMode = UIDatePickerMode.Time
+        timeThreeDatePicker.datePickerMode = UIDatePickerMode.Time
         
-        //let timeFormat: NSDateFormatter = NSDateFormatter()
-        //timeFormat.dateFormat = "hh:mm"
-        //let time = "8:00"
-        //timeOneSubtitle.text = time
-        //timeTwoSubtitle.text = time
+        timeFormat.dateStyle = NSDateFormatterStyle.ShortStyle        
         
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,6 +49,23 @@ class TimesPerDayTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func toggleTimeOneTitle(){
+        timeOneTitleIsHidden = !timeOneTitleIsHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func toggleTimeTwoTitle(){
+        timeTwoTitleIsHidden = !timeTwoTitleIsHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func toggleTimeThreeTitle(){
+        timeThreeTitleIsHidden = !timeThreeTitleIsHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
     
     func toggleTimeOnePicker(){
         timePickerOneIsHidden = !timePickerOneIsHidden
@@ -54,6 +78,24 @@ class TimesPerDayTableViewController: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
+    func toggleTimeThreePicker(){
+        timePickerThreeIsHidden = !timePickerThreeIsHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    @IBAction func timeOneDatePickerAction(sender: AnyObject) {
+        //timeOneDatePickerChanged()
+    }
+
+    @IBAction func timeTwoDatePickerAction(sender: AnyObject) {
+        timeTwoDatePickerChanged()
+    }
+
+    @IBAction func timeThreeDatePickerAction(sender: AnyObject) {
+        timeThreeDatePickerChanged()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,28 +103,79 @@ class TimesPerDayTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
         if timePickerOneIsHidden && indexPath.section == 1 && indexPath.row == 1{
+            return 0
+        }
+        else if timeOneTitleIsHidden && indexPath.section == 1 && indexPath.row == 0{
             return 0
         }
         else if timePickerTwoIsHidden && indexPath.section == 1 && indexPath.row == 3{
             return 0
         }
-        //else{
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
-        //}
+        else if timeTwoTitleIsHidden && indexPath.section == 1 && indexPath.row == 2{
+            return 0
+        }
+        else if timePickerThreeIsHidden && indexPath.section == 1 && indexPath.row == 5{
+            return 0
+        }
+        else if timeThreeTitleIsHidden && indexPath.section == 1 && indexPath.row == 4{
+            return 0
+        }
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 && indexPath.row == 0{
+        if indexPath.section == 0 && (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2){
+            toggleCheckmark(tableView, indexPath: indexPath)
+            if indexPath.row == 0{
+                toggleTimeOneTitle()
+            }
+            else if indexPath.row == 1{
+                toggleTimeTwoTitle()
+            }
+            else if indexPath.row == 2{
+                toggleTimeThreeTitle()
+            }
+        }
+        else if indexPath.section == 1 && indexPath.row == 0{
             toggleTimeOnePicker()
         }
         else if indexPath.section == 1 && indexPath.row == 2{
             toggleTimeTwoPicker()
         }
+        else if indexPath.section == 1 && indexPath.row == 4{
+            toggleTimeThreePicker()
+        }
         else{
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
+    
+    func toggleCheckmark(tableView: UITableView, indexPath: NSIndexPath){
+        // Get a cell and change the accessory type
+        let selection = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if selection?.accessoryType == UITableViewCellAccessoryType.None{
+            selection?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        else{
+            selection?.accessoryType = UITableViewCellAccessoryType.None
+        }
+    }
+    
+    func timeOneDatePickerChanged(){
+        //timeOneSubtitle.text = ""
+    }
+    
+    func timeTwoDatePickerChanged(){
+        //timeTwoSubtitle.text = ""
+    }
+    
+    func timeThreeDatePickerChanged(){
+        //timeThreeSubtitle.text = ""
+    }
+    
     // MARK: - Table view data source
     /**
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
