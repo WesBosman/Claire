@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="1314" y="153"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Schedule medication times-->
         <scene sceneID="4nC-WL-Six">
             <objects>
                 <tableViewController id="40o-qb-6ZG" customClass="TableViewController" customModule="Claire" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,6 +112,7 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="gCk-p7-CXq">
+                                <string key="footerTitle">Set day and night to send two notifictions for one set time both in the morning and afternoon. If medication depends on diet specify how many hours after eating in which you would like to be reminded to take the medication.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="Jcv-xh-Kst">
                                         <rect key="frame" x="0.0" y="223.5" width="600" height="44"/>
@@ -171,10 +172,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="wjz-Bc-n5o">
+                            <tableViewSection footerTitle="Set the days in which you would like this alarm to be set." id="wjz-Bc-n5o">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fRS-SS-rOh" detailTextLabel="QhN-Dq-2aX" style="IBUITableViewCellStyleValue1" id="D8a-b4-OdW">
-                                        <rect key="frame" x="0.0" y="347.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="388.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8a-b4-OdW" id="yoL-Ju-joT">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -202,19 +203,16 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="jcg-a6-55U">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection id="oCB-hH-Jmc">
+                            <tableViewSection footerTitle="Turn on reminders to have the application notify you 10 minutes after your missed medication time." id="jcg-a6-55U">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="osU-JD-NXp" style="IBUITableViewCellStyleDefault" id="on9-cR-5Up">
-                                        <rect key="frame" x="0.0" y="463.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="477.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="on9-cR-5Up" id="do7-We-mz4">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="osU-JD-NXp">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="osU-JD-NXp">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -223,8 +221,14 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tnC-54-oPO" kind="show" id="3uZ-PC-ayk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
+                            </tableViewSection>
+                            <tableViewSection id="oCB-hH-Jmc">
+                                <cells/>
                             </tableViewSection>
                         </sections>
                         <connections>
@@ -233,10 +237,14 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Schedule medication times" id="W83-xa-wPY">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="bTX-sp-oWU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="dayAndNightSwitch" destination="WoQ-IP-UEo" id="fgp-dB-fMt"/>
                         <outlet property="dietSwitch" destination="7pe-2E-m03" id="aGO-nb-Jqs"/>
                         <outlet property="medicationNameTextBox" destination="yiP-qp-p6b" id="s2a-vt-qwx"/>
+                        <outlet property="numberOfTimesRightDetail" destination="BFn-1c-GEG" id="XX7-6S-AKv"/>
                         <outlet property="repeatRightDetail" destination="QhN-Dq-2aX" id="2Xv-JW-6Ws"/>
                     </connections>
                 </tableViewController>
@@ -484,7 +492,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fy9-r6-Pgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="-494"/>
+            <point key="canvasLocation" x="2758" y="-562"/>
         </scene>
         <!--Add Days-->
         <scene sceneID="axo-9I-V9N">
@@ -637,6 +645,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXH-yf-hpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2758" y="178"/>
+        </scene>
+        <!--Add Reminder-->
+        <scene sceneID="ScX-Bn-xxB">
+            <objects>
+                <tableViewController id="tnC-54-oPO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="D6h-da-4G1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Turn On Reminders" id="y2P-Mg-FKo">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="YoA-at-c1s">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YoA-at-c1s" id="iTQ-yt-H6l">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzi-Wg-PNb">
+                                                    <rect key="frame" x="533" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHG-Bp-GS2">
+                                                    <rect key="frame" x="18" y="11" width="200" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yzi-Wg-PNb" secondAttribute="trailing" constant="10" id="W4h-h1-hrQ"/>
+                                                <constraint firstItem="yzi-Wg-PNb" firstAttribute="centerY" secondItem="iTQ-yt-H6l" secondAttribute="centerY" id="aNJ-fF-pOG"/>
+                                                <constraint firstItem="yzi-Wg-PNb" firstAttribute="centerY" secondItem="fHG-Bp-GS2" secondAttribute="centerY" id="rsd-Tv-a07"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="66y-ve-Kim">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="cd1-cM-SdN" detailTextLabel="0fJ-pI-hQi" style="IBUITableViewCellStyleValue1" id="TEp-3f-wKQ">
+                                        <rect key="frame" x="0.0" y="193.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TEp-3f-wKQ" id="iQd-0J-Juo">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Set Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cd1-cM-SdN">
+                                                    <rect key="frame" x="15" y="12" width="64.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fJ-pI-hQi">
+                                                    <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="160" id="agu-2z-Z6Q">
+                                        <rect key="frame" x="0.0" y="238" width="600" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agu-2z-Z6Q" id="F5Q-ex-cVV">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wSD-K2-Pdn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="486965502.12625802">
+                                                        <!--2016-06-07 04:11:42 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wSD-K2-Pdn" firstAttribute="top" secondItem="F5Q-ex-cVV" secondAttribute="top" id="N49-jM-quq"/>
+                                                <constraint firstItem="wSD-K2-Pdn" firstAttribute="centerY" secondItem="F5Q-ex-cVV" secondAttribute="centerY" id="dG5-bN-swJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="wSD-K2-Pdn" secondAttribute="trailing" id="dNW-LX-XoQ"/>
+                                                <constraint firstItem="wSD-K2-Pdn" firstAttribute="leading" secondItem="F5Q-ex-cVV" secondAttribute="leading" id="woj-NF-eAT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tnC-54-oPO" id="MwF-Yf-aZF"/>
+                            <outlet property="delegate" destination="tnC-54-oPO" id="amZ-zE-Qlg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Reminder" id="4Lj-i5-Lqz">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="XQn-Ay-Msb"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkZ-eC-PgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2758" y="881"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nc9-lN-nva">

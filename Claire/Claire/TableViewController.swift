@@ -19,12 +19,14 @@ class TableViewController: UITableViewController{
     @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
     @IBOutlet weak var repeatRightDetail: UILabel!
     @IBOutlet weak var medicationNameTextBox: UITextField!
+    @IBOutlet weak var numberOfTimesRightDetail: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // We only want time for our date picker
         //timeToTakeMedsRightDetail.text = ""
         medicationNameTextBox.placeholder = "Name of Medication"
+        numberOfTimesRightDetail.text = nil
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
