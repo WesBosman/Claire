@@ -9,9 +9,7 @@
 import UIKit
 
 class TimesPerDayTableViewController: UITableViewController {
-    @IBOutlet weak var timeOneSubtitle: UILabel!
     @IBOutlet weak var timeOneDatePicker: UIDatePicker!
-    @IBOutlet weak var timeTwoSubtitle: UILabel!
     @IBOutlet weak var timeTwoDatePicker: UIDatePicker!
     private var timeOneTitleIsHidden = false
     private var timeTwoTitleIsHidden = false
@@ -21,9 +19,10 @@ class TimesPerDayTableViewController: UITableViewController {
     private var timePickerThreeIsHidden = false
     private var daysSelected = []
     @IBOutlet weak var timeThreeDatePicker: UIDatePicker!
-    @IBOutlet weak var timeThreeSubtitle: UILabel!
     let timeFormat: NSDateFormatter = NSDateFormatter()
-    private let date = NSDate()
+    @IBOutlet weak var timeOneDetailLabel: UILabel!
+    @IBOutlet weak var timeTwoDetailLabel: UILabel!
+    @IBOutlet weak var timeThreeDetailLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,12 @@ class TimesPerDayTableViewController: UITableViewController {
         timeTwoDatePicker.datePickerMode = UIDatePickerMode.Time
         timeThreeDatePicker.datePickerMode = UIDatePickerMode.Time
         
-        timeFormat.dateStyle = NSDateFormatterStyle.ShortStyle        
+        // Set date pickers to initial values
+        timeFormat.dateFormat = "h:mm a"
+        let defaultStartTime = timeFormat.dateFromString("7:00 AM")
+        timeOneDatePicker.date = defaultStartTime!
+        timeTwoDatePicker.date = defaultStartTime!
+        timeThreeDatePicker.date = defaultStartTime!
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,18 +55,21 @@ class TimesPerDayTableViewController: UITableViewController {
     
     func toggleTimeOneTitle(){
         timeOneTitleIsHidden = !timeOneTitleIsHidden
+        timeOneDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleTimeTwoTitle(){
         timeTwoTitleIsHidden = !timeTwoTitleIsHidden
+        timeTwoDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleTimeThreeTitle(){
         timeThreeTitleIsHidden = !timeThreeTitleIsHidden
+        timeThreeDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -86,7 +93,7 @@ class TimesPerDayTableViewController: UITableViewController {
     }
     
     @IBAction func timeOneDatePickerAction(sender: AnyObject) {
-        //timeOneDatePickerChanged()
+        timeOneDatePickerChanged()
     }
 
     @IBAction func timeTwoDatePickerAction(sender: AnyObject) {
@@ -165,15 +172,23 @@ class TimesPerDayTableViewController: UITableViewController {
     }
     
     func timeOneDatePickerChanged(){
-        //timeOneSubtitle.text = ""
+        let str = timeFormat.stringFromDate(timeOneDatePicker.date)
+        timeOneDetailLabel.text = str
     }
     
     func timeTwoDatePickerChanged(){
-        //timeTwoSubtitle.text = ""
+        let str = timeFormat.stringFromDate(timeTwoDatePicker.date)
+        timeTwoDetailLabel.text = str
     }
     
     func timeThreeDatePickerChanged(){
-        //timeThreeSubtitle.text = ""
+        let str = timeFormat.stringFromDate(timeThreeDatePicker.date)
+        timeThreeDetailLabel.text = str
+    }
+    
+    // Want to save the times and make them into notifications.
+    @IBAction func saveButtonIsPressed(sender: AnyObject) {
+        
     }
     
     // MARK: - Table view data source
