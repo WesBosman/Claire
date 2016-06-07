@@ -47,6 +47,35 @@
             </objects>
             <point key="canvasLocation" x="1314" y="153"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="TXV-nh-lwI">
+            <objects>
+                <tableViewController id="4JP-91-bd0" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HvW-Tn-V9J">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WTB-pB-ji6">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WTB-pB-ji6" id="j4b-Af-EiE">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4JP-91-bd0" id="7kZ-lN-4Xh"/>
+                            <outlet property="delegate" destination="4JP-91-bd0" id="3Se-8H-awz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="c88-sd-rCg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RF6-f8-lJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="989"/>
+        </scene>
         <!--Meds-->
         <scene sceneID="4nC-WL-Six">
             <objects>
@@ -80,17 +109,17 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Number of Times Per Day" id="raH-4P-xhb">
+                            <tableViewSection id="raH-4P-xhb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dNB-05-DrU" detailTextLabel="BFn-1c-GEG" style="IBUITableViewCellStyleValue1" id="wXC-8P-8FK">
-                                        <rect key="frame" x="0.0" y="143.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="129.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wXC-8P-8FK" id="84Q-SQ-DVq">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Number of Times Per Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dNB-05-DrU">
-                                                    <rect key="frame" x="15" y="12" width="186" height="19.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Times of Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dNB-05-DrU">
+                                                    <rect key="frame" x="15" y="12" width="95" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,7 +144,7 @@
                                 <string key="footerTitle">Set day and night to send two notifictions for one set time both in the morning and afternoon. If medication depends on diet specify how many hours after eating in which you would like to be reminded to take the medication.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="Jcv-xh-Kst">
-                                        <rect key="frame" x="0.0" y="223.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="209.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jcv-xh-Kst" id="1Gf-3U-6eF">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -143,7 +172,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yeK-rn-MpB">
-                                        <rect key="frame" x="0.0" y="267.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="253.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yeK-rn-MpB" id="a4i-h0-DaT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -172,10 +201,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Set the days in which you would like this alarm to be set." id="wjz-Bc-n5o">
+                            <tableViewSection footerTitle="Set the days of the week" id="wjz-Bc-n5o">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fRS-SS-rOh" detailTextLabel="QhN-Dq-2aX" style="IBUITableViewCellStyleValue1" id="D8a-b4-OdW">
-                                        <rect key="frame" x="0.0" y="388.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="374.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8a-b4-OdW" id="yoL-Ju-joT">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -203,20 +232,27 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Turn on reminders to have the application notify you 10 minutes after your missed medication time." id="jcg-a6-55U">
+                            <tableViewSection footerTitle="Turn on reminders and set their times" id="jcg-a6-55U">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="osU-JD-NXp" style="IBUITableViewCellStyleDefault" id="on9-cR-5Up">
-                                        <rect key="frame" x="0.0" y="477.5" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="osU-JD-NXp" detailTextLabel="zqo-xO-wN1" style="IBUITableViewCellStyleValue1" id="on9-cR-5Up">
+                                        <rect key="frame" x="0.0" y="463.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="on9-cR-5Up" id="do7-We-mz4">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="osU-JD-NXp">
-                                                    <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
+                                                    <rect key="frame" x="15" y="12" width="77.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zqo-xO-wN1">
+                                                    <rect key="frame" x="523.5" y="12" width="41.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -245,7 +281,8 @@
                         <outlet property="dietSwitch" destination="7pe-2E-m03" id="aGO-nb-Jqs"/>
                         <outlet property="medicationNameTextBox" destination="yiP-qp-p6b" id="s2a-vt-qwx"/>
                         <outlet property="numberOfTimesRightDetail" destination="BFn-1c-GEG" id="XX7-6S-AKv"/>
-                        <outlet property="repeatRightDetail" destination="QhN-Dq-2aX" id="2Xv-JW-6Ws"/>
+                        <outlet property="reminderRightDetail" destination="zqo-xO-wN1" id="1V4-bL-f7a"/>
+                        <outlet property="repeatRightDetail" destination="QhN-Dq-2aX" id="KOH-aK-iYz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5w-Ry-WeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,6 +515,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Save" id="03r-Uz-lw4">
                             <connections>
                                 <action selector="saveButtonIsPressed:" destination="PmX-9I-EHA" id="YUR-g1-9Uj"/>
+                                <segue destination="aA6-EY-vcF" kind="unwind" identifier="UnwindTimesPerDay" unwindAction="myUnwindAction:" id="GZ2-P5-tIM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -491,6 +529,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fy9-r6-Pgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aA6-EY-vcF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2758" y="-562"/>
         </scene>
@@ -636,13 +675,14 @@
                     <navigationItem key="navigationItem" title="Add Days" id="mo6-DB-3BE">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="WGk-W2-ExL">
                             <connections>
-                                <action selector="saveButtonPressed:" destination="Wni-HO-WNQ" id="l86-2a-9Se"/>
+                                <segue destination="cRk-3K-J4i" kind="unwind" identifier="UnwindAddDays" unwindAction="myUnwindAction:" id="PWF-cf-FGc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXH-yf-hpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cRk-3K-J4i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2758" y="178"/>
         </scene>
@@ -658,14 +698,17 @@
                             <tableViewSection headerTitle="Turn On Reminders" id="y2P-Mg-FKo">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="YoA-at-c1s">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YoA-at-c1s" id="iTQ-yt-H6l">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzi-Wg-PNb">
                                                     <rect key="frame" x="533" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="reminderSwitchPressed:" destination="tnC-54-oPO" eventType="valueChanged" id="1zk-qQ-6BA"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHG-Bp-GS2">
                                                     <rect key="frame" x="18" y="8" width="128" height="21"/>
@@ -714,10 +757,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="160" id="agu-2z-Z6Q">
-                                        <rect key="frame" x="0.0" y="238" width="600" height="160"/>
+                                        <rect key="frame" x="0.0" y="237.5" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="agu-2z-Z6Q" id="F5Q-ex-cVV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="wSD-K2-Pdn">
@@ -747,7 +790,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Reminder" id="4Lj-i5-Lqz">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="XQn-Ay-Msb"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="XQn-Ay-Msb">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="tnC-54-oPO" id="Gvh-4A-NfV"/>
+                                <segue destination="TZy-jI-Iah" kind="unwind" identifier="UnwindAddReminder" unwindAction="myUnwindAction:" id="5r3-27-CpD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="reminderDatePicker" destination="wSD-K2-Pdn" id="dpB-BZ-eXa"/>
@@ -756,8 +804,9 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkZ-eC-PgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TZy-jI-Iah" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="881"/>
+            <point key="canvasLocation" x="4382" y="952"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nc9-lN-nva">
@@ -776,6 +825,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOz-cg-LQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="502" y="153"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Rhr-wu-Bas">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j3J-kq-vak" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="H38-eD-FmK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ThX-g0-S8Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4JP-91-bd0" kind="relationship" relationship="rootViewController" id="WOV-jQ-QWd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9f-52-KJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1198" y="825"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Xcz-8o-wRD">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6DK-SO-78l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="6Bi-In-wQV">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="j3J-kq-vak" kind="relationship" relationship="viewControllers" id="oXW-w3-mgJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TjH-Pj-6Os" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502" y="825"/>
         </scene>
     </scenes>
 </document>

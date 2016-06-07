@@ -18,60 +18,69 @@ class AddReminderTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTimeDetailLabel.text = nil
-        timeFormat.dateFormat = "hh:mm "
+        setTimeDetailLabel.text = "0:00"
+        timeFormat.dateFormat = "HH:mm "
         reminderDatePicker.datePickerMode = UIDatePickerMode.CountDownTimer
         reminderSwitch.onTintColor = UIColor.purpleColor()
         reminderSwitch.tintColor = UIColor.purpleColor()
         reminderSwitch.setOn(false, animated: true)
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func togglePickerTitle(){
-        timePickerTitle = !timePickerTitle
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    @IBAction func reminderSwitchPressed(sender: AnyObject) {
+        togglePickerTitle()
     }
     
-    func togglePicker(){
+//    @IBAction func saveButtonPressed(sender: AnyObject) {
+//        let timerString = setTimeDetailLabel.text
+//        print("Timer String: \(timerString)")
+//        //self.navigationController?.popViewControllerAnimated(true)
+//    }
+    
+    func togglePickerTitle(){
+        timePickerTitle = !timePickerTitle
         timePickerHidden = !timePickerHidden
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
-    func timePickerChanged(){
+//    func togglePicker(){
+//        timePickerHidden = !timePickerHidden
+//        tableView.beginUpdates()
+//        tableView.endUpdates()
+//    }
+    
+    @IBAction func timePickerHasChanged(sender: AnyObject) {
         let str = timeFormat.stringFromDate(reminderDatePicker.date)
         setTimeDetailLabel.text = str
     }
     
-    @IBAction func timePickerHasChanged(sender: AnyObject) {
-        timePickerChanged()
-    }
     
-    /*
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        if !reminderSwitch.on && indexPath.section == 1 && indexPath.row == 0{
-            //return 0
+        if !timePickerTitle && reminderSwitch.on == false
+            && indexPath.section == 1 && indexPath.row == 0{
+            return 0
         }
-        else if !reminderSwitch.on && indexPath.section == 1 && indexPath.row == 1{
-            //return 0
+        else if !timePickerHidden && reminderSwitch.on == false
+            && indexPath.section == 1 && indexPath.row == 1{
+            return 0
         }
         else{
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
     }
-    */
     
     // MARK: - Table view data source
     /*
@@ -131,14 +140,20 @@ class AddReminderTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        print("Segue Id: \(segue.identifier!)")
+        if segue.identifier! == "UnwindAddReminder" {
+            let destination = segue.destinationViewController as! TableViewController
+            destination.reminderRightDetail.text = setTimeDetailLabel.text!
+            destination.viewWillAppear(true)
+            print("Set Time Label: \(setTimeDetailLabel.text!)")
+        }
     }
-    */
 
 }

@@ -14,8 +14,6 @@ class RepeatDaysTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Doesn't work.
-        //self.navigationItem.rightBarButtonItem?.title = "Save"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -24,13 +22,6 @@ class RepeatDaysTableViewController: UITableViewController {
          //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    @IBAction func saveButtonPressed(sender: AnyObject) {
-        //let previousView = TableViewController()
-        //previousView.repeatRightDetail.text! = listOfDaysAsString
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,6 +44,7 @@ class RepeatDaysTableViewController: UITableViewController {
         else{
             selection!.accessoryType = UITableViewCellAccessoryType.Checkmark
             listOfDays.insert(day!)
+            listOfDaysAsString += day! + ", "
             print("Add \(day!)")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -123,9 +115,13 @@ class RepeatDaysTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "returnFromAddDaysSegue"{
+        print("Segue Id: \(segue.identifier!)")
+        if segue.identifier! == "UnwindAddDays"{
             let destination = segue.destinationViewController as! TableViewController
-            destination.repeatRightDetail?.text = listOfDaysAsString
+            destination.repeatRightDetail.text = listOfDaysAsString
+            print("List of Days as String: \(listOfDaysAsString)")
+            print("List of days: \(listOfDays)")
+            
         }
     }
     

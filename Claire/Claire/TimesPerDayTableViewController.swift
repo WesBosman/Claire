@@ -248,14 +248,27 @@ class TimesPerDayTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        print("Segue ID: \(segue.identifier)")
+        if segue.identifier! == "UnwindTimesPerDay"{
+            let destination = segue.destinationViewController as! TableViewController
+            var times:String = ""
+            if timeOneDetailLabel.text != nil{
+                times += timeOneDetailLabel.text! + ", "
+            }
+            else if timeTwoDetailLabel.text != nil{
+                times += timeTwoDetailLabel.text! + ", "
+            }
+            else if timeThreeDetailLabel.text != nil{
+                times += timeThreeDetailLabel.text!
+            }
+            destination.numberOfTimesRightDetail.text = times
+        }
     }
-    */
-
 }

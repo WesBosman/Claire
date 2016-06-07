@@ -17,16 +17,18 @@ class TableViewController: UITableViewController{
     private var medicationNameHidden = false
     private var repeatingPickerHidden = false
     @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
-    @IBOutlet weak var repeatRightDetail: UILabel!
     @IBOutlet weak var medicationNameTextBox: UITextField!
     @IBOutlet weak var numberOfTimesRightDetail: UILabel!
+    @IBOutlet weak var repeatRightDetail: UILabel!
+    @IBOutlet weak var reminderRightDetail: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // We only want time for our date picker
-        //timeToTakeMedsRightDetail.text = ""
         medicationNameTextBox.placeholder = "Name of Medication"
         numberOfTimesRightDetail.text = nil
+        reminderRightDetail.text = nil
+        repeatRightDetail.text = nil
         dayAndNightSwitch.tintColor = UIColor.purpleColor()
         dayAndNightSwitch.onTintColor = UIColor.purpleColor()
         dayAndNightSwitch.setOn(false, animated: true)
@@ -42,13 +44,21 @@ class TableViewController: UITableViewController{
     }
     
     override func viewWillAppear(animated: Bool) {
-        repeatRightDetail.text = ""
+        print("TableView Did Appear Animated")
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
+        print("Unwind action was called")
+        tableView.reloadData()
+    }
+
     /**
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Toggle the date picker to select a time to take the medication.
