@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="1314" y="153"/>
         </scene>
-        <!--Schedule medication times-->
+        <!--Meds-->
         <scene sceneID="4nC-WL-Six">
             <objects>
                 <tableViewController id="40o-qb-6ZG" customClass="TableViewController" customModule="Claire" customModuleProvider="target" sceneMemberID="viewController">
@@ -237,7 +237,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Schedule medication times" id="W83-xa-wPY">
+                    <navigationItem key="navigationItem" title="Meds" id="W83-xa-wPY">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="bTX-sp-oWU"/>
                     </navigationItem>
                     <connections>
@@ -649,7 +649,7 @@
         <!--Add Reminder-->
         <scene sceneID="ScX-Bn-xxB">
             <objects>
-                <tableViewController id="tnC-54-oPO" sceneMemberID="viewController">
+                <tableViewController id="tnC-54-oPO" customClass="AddReminderTableViewController" customModule="Claire" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="D6h-da-4G1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -658,7 +658,7 @@
                             <tableViewSection headerTitle="Turn On Reminders" id="y2P-Mg-FKo">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="YoA-at-c1s">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YoA-at-c1s" id="iTQ-yt-H6l">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -667,17 +667,21 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yzi-Wg-PNb">
                                                     <rect key="frame" x="533" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHG-Bp-GS2">
-                                                    <rect key="frame" x="18" y="11" width="200" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHG-Bp-GS2">
+                                                    <rect key="frame" x="18" y="8" width="128" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="128" id="k44-Ww-zc0"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="yzi-Wg-PNb" secondAttribute="trailing" constant="10" id="W4h-h1-hrQ"/>
-                                                <constraint firstItem="yzi-Wg-PNb" firstAttribute="centerY" secondItem="iTQ-yt-H6l" secondAttribute="centerY" id="aNJ-fF-pOG"/>
-                                                <constraint firstItem="yzi-Wg-PNb" firstAttribute="centerY" secondItem="fHG-Bp-GS2" secondAttribute="centerY" id="rsd-Tv-a07"/>
+                                                <constraint firstItem="fHG-Bp-GS2" firstAttribute="top" secondItem="iTQ-yt-H6l" secondAttribute="topMargin" id="7aG-Ze-dyJ"/>
+                                                <constraint firstItem="yzi-Wg-PNb" firstAttribute="centerY" secondItem="iTQ-yt-H6l" secondAttribute="centerY" id="D4j-NF-7tS"/>
+                                                <constraint firstItem="fHG-Bp-GS2" firstAttribute="leading" secondItem="iTQ-yt-H6l" secondAttribute="leadingMargin" constant="10" id="KoD-UA-ebY"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yzi-Wg-PNb" secondAttribute="trailing" constant="10" id="ypn-PN-6dY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -721,6 +725,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="486965502.12625802">
                                                         <!--2016-06-07 04:11:42 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="timePickerHasChanged:" destination="tnC-54-oPO" eventType="valueChanged" id="zUp-Yi-v5c"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -742,6 +749,11 @@
                     <navigationItem key="navigationItem" title="Add Reminder" id="4Lj-i5-Lqz">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="XQn-Ay-Msb"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="reminderDatePicker" destination="wSD-K2-Pdn" id="dpB-BZ-eXa"/>
+                        <outlet property="reminderSwitch" destination="yzi-Wg-PNb" id="ifI-5S-hCH"/>
+                        <outlet property="setTimeDetailLabel" destination="0fJ-pI-hQi" id="Pzv-vq-wZC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkZ-eC-PgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

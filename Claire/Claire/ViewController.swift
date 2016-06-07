@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Black
-        nav?.barTintColor = UIColor.orangeColor()
+        nav?.barTintColor = UIColor.purpleColor()
         nav?.tintColor = UIColor.whiteColor()
         
     }

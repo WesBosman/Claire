@@ -1,38 +1,29 @@
 //
-//  TableViewController.swift
+//  AddReminderTableViewController.swift
 //  Claire
 //
-//  Created by Wes Bosman on 6/2/16.
+//  Created by Wes Bosman on 6/7/16.
 //  Copyright © 2016 Wes Bosman. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController{
+class AddReminderTableViewController: UITableViewController {
+    @IBOutlet weak var reminderDatePicker: UIDatePicker!
+    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var setTimeDetailLabel: UILabel!
+    private let timeFormat = NSDateFormatter()
+    private var timePickerHidden = false
+    private var timePickerTitle = false
 
-    @IBOutlet weak var dayAndNightSwitch: UISwitch!
-    @IBOutlet weak var dietSwitch: UISwitch!
-    @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
-    private var timeToTakeMedicationHidden = false
-    private var medicationNameHidden = false
-    private var repeatingPickerHidden = false
-    @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
-    @IBOutlet weak var repeatRightDetail: UILabel!
-    @IBOutlet weak var medicationNameTextBox: UITextField!
-    @IBOutlet weak var numberOfTimesRightDetail: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // We only want time for our date picker
-        //timeToTakeMedsRightDetail.text = ""
-        medicationNameTextBox.placeholder = "Name of Medication"
-        numberOfTimesRightDetail.text = nil
-        dayAndNightSwitch.tintColor = UIColor.purpleColor()
-        dayAndNightSwitch.onTintColor = UIColor.purpleColor()
-        dayAndNightSwitch.setOn(false, animated: true)
-        dietSwitch.tintColor = UIColor.purpleColor()
-        dietSwitch.onTintColor = UIColor.purpleColor()
-        dietSwitch.setOn(false, animated: true)
+        setTimeDetailLabel.text = nil
+        timeFormat.dateFormat = "hh:mm "
+        reminderDatePicker.datePickerMode = UIDatePickerMode.CountDownTimer
+        reminderSwitch.onTintColor = UIColor.purpleColor()
+        reminderSwitch.tintColor = UIColor.purpleColor()
+        reminderSwitch.setOn(false, animated: true)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -40,43 +31,48 @@ class TableViewController: UITableViewController{
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        repeatRightDetail.text = ""
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /**
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Toggle the date picker to select a time to take the medication.
-        if indexPath.section == 1 && indexPath.row == 0{
-            toggleTakeMedicationPicker()
-        }
-        // Toggle the repeat picker
-        else if indexPath.section == 3 && indexPath.row == 0{
-            toggleRepeatingPicker()
-        }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    
+    func togglePickerTitle(){
+        timePickerTitle = !timePickerTitle
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
+    func togglePicker(){
+        timePickerHidden = !timePickerHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func timePickerChanged(){
+        let str = timeFormat.stringFromDate(reminderDatePicker.date)
+        setTimeDetailLabel.text = str
+    }
+    
+    @IBAction func timePickerHasChanged(sender: AnyObject) {
+        timePickerChanged()
+    }
+    
+    /*
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Hide the time picker for the medication
-        if timeToTakeMedicationHidden && indexPath.section == 1 && indexPath.row == 1{
-            return 0
-        }
-        // Hide the repeating picker
-        else if repeatingPickerHidden && indexPath.section == 3 && indexPath.row == 1{
-            return 0
-        }
         
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
-        
+        if !reminderSwitch.on && indexPath.section == 1 && indexPath.row == 0{
+            //return 0
+        }
+        else if !reminderSwitch.on && indexPath.section == 1 && indexPath.row == 1{
+            //return 0
+        }
+        else{
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
     }
     */
-
+    
     // MARK: - Table view data source
     /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -89,6 +85,7 @@ class TableViewController: UITableViewController{
         return 0
     }
     */
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
