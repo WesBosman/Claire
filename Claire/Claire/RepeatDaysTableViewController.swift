@@ -37,7 +37,7 @@ class RepeatDaysTableViewController: UITableViewController {
             if listOfDays.contains(day!){
                 let index = listOfDays.indexOf(day!)
                 listOfDays.removeAtIndex(index!)
-                print("Remove \(day) at index \(index)")
+                print("Remove \(day!) at index \(index!)")
             }
         }
         // Otherwise turn the checkmark on and add the day to the set
@@ -50,62 +50,40 @@ class RepeatDaysTableViewController: UITableViewController {
         
     }
 
-    // MARK: - Table view data source
-    /*
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    // Got these next two methods from Sandeep on stackoverflow
+    func formattedDaysInThisWeek() -> [String] {
+        // create calendar
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        
+        // today's date
+        let today = NSDate()
+        let todayComponent = calendar.components([.Day, .Month, .Year], fromDate: today)
+        
+        // range of dates in this week
+        let thisWeekDateRange = calendar.rangeOfUnit(.Day, inUnit:.WeekOfMonth, forDate:today)
+        
+        // date interval from today to beginning of week
+        let dayInterval = thisWeekDateRange.location - todayComponent.day
+        
+        // date for beginning day of this week, ie. this week's Sunday's date
+        let beginningOfWeek = calendar.dateByAddingUnit(.Day, value: dayInterval, toDate: today, options: .MatchNextTime)
+        
+        var formattedDays: [String] = []
+        
+        for i in 0 ..< thisWeekDateRange.length {
+            let date = calendar.dateByAddingUnit(.Day, value: i, toDate: beginningOfWeek!, options: .MatchNextTime)!
+            formattedDays.append(formatDate(date))
+        }
+        
+        return formattedDays
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return daysOfTheWeek.count
-    }
-     */
-    /**
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        return cell
-    }
- */
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func formatDate(date: NSDate) -> String {
+        let format = "EEEE MMMM dd yyyy"
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = format
+        return formatter.stringFromDate(date)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
     
     // MARK: - Navigation
     
@@ -113,16 +91,22 @@ class RepeatDaysTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        print("Segue Id: \(segue.identifier!)")
+
         if segue.identifier! == "UnwindAddDays"{
             let destination = segue.destinationViewController as! TableViewController
-            for day in listOfDays.reverse(){
-                listOfDaysAsString += day + " "
+            let daysOfWeek = formattedDaysInThisWeek()
+            for day in daysOfWeek{
+                for newDay in listOfDays.reverse(){
+                    if day.hasPrefix(newDay){
+                        listOfDaysAsString += newDay + " "
+                        listOfDays.remove(newDay)
+                        listOfDays.insert(day)
+                    }
+                }
             }
+            
             destination.repeatRightDetail.text = listOfDaysAsString
             destination.medicationDaysSet = listOfDays
-            print("List of Days as String: \(listOfDaysAsString)")
-            print("List of days: \(listOfDays)")
             
         }
     }

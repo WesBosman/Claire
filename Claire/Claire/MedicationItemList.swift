@@ -15,7 +15,6 @@ class MedicationItemList{
     // New singleton code
     static let sharedInstance = sharedMedicationList
     
-    // Create notifications for tasks??? They aren't really associated with time.
     // Add item to the dictionary
     func addItem(item: MedicationItem){
         // Create the dictionary object to hold my objects
@@ -29,29 +28,35 @@ class MedicationItemList{
         
         // Save or Overwrite information in the dictionary
         NSUserDefaults.standardUserDefaults().setObject(medDictionary, forKey: MED_KEY)
-        // I need to create a local notification.
-        let notification = UILocalNotification()
-        notification.alertBody = "Time to take medication \(item.medicationName)"
-        notification.applicationIconBadgeNumber += 1
-        notification.alertAction = "open"
-        var newDate:String
-//        let makeDate: NSDateComponents
-//        var calendar: NSCalendar
-//        let format = NSDateComponentsFormatter()
+        
+        // Set up the dates and formating for the notifications. 
+        var newDate: String
+        var newDateArray = [NSDate]()
+        let format = NSDateFormatter()
+        format.dateFormat = "EEEE MMMM dd yyyy hh:mm a"
         
         for day in item.arrayOfDays{
             for time in item.arrayOfTimes.values{
-                //print("Notification Time: \(time)")
                 newDate = day + " " + time
-                
-                //notification.fireDate = format.dateFromString(newDate)
-                print("New Notification Date: \(newDate)")
+                let newNSDate = format.dateFromString(newDate)
+                print("New NSDate: \(newNSDate)")
+                newDateArray.append(newNSDate!)
+                print("New Date Array: \(newDateArray)")
             }
         }
-        notification.soundName = UILocalNotificationDefaultSoundName
-        notification.userInfo = ["NotificationUUID": item.uuid]
-        notification.category = "MEDICATION_CATEGORY"
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        for newDay in newDateArray{
+            print("New Day: \(newDay)")
+            let notification = UILocalNotification()
+            notification.alertBody = "Time to take medication \(item.medicationName)"
+            notification.applicationIconBadgeNumber += 1
+            notification.alertAction = "open"
+            notification.fireDate = newDay
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.userInfo = ["NotificationUUID": item.uuid]
+            notification.category = "MEDICATION_CATEGORY"
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        }
     }
     
     // Function to remove items from the dictionary
@@ -74,7 +79,7 @@ class MedicationItemList{
     func allMeds() -> [MedicationItem] {
         let medDict = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY) ?? [:]
         let medItems = Array(medDict.values)
-        print("Medication Items \(medItems)")
+        //print("Medication Items \(medItems)")
         return medItems.map({MedicationItem(
             name: $0["name"] as! String,
             time: $0["times"] as! String,

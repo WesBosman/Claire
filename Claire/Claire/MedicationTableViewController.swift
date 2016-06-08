@@ -21,37 +21,18 @@ class MedicationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        medItemList = MedicationItemList.sharedInstance.allMeds()
+        //medItemList = MedicationItemList.sharedInstance.allMeds()
         NSNotificationCenter.defaultCenter()
-            .addObserver(self, selector: #selector(self.refreshList), name: "medicationList", object: nil)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+            .addObserver(self, selector: #selector(MedicationTableViewController.refreshList), name: "medicationList", object: nil)
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     func refreshList(){
         medItemList = MedicationItemList.sharedInstance.allMeds()
-        let date:NSDate = NSDate()
-        //let format:NSDateFormatter = NSDateFormatter()
-        
-        for med in medItemList{
-            //date = format.dateFromString(med.medicationTimes)!
-            print("date : \(date)")
-            print()
-            for day in med.arrayOfDays{
-                print("medication date: \(med.medicationDays) \(med.medicationTimes.stringByReplacingOccurrencesOfString(",", withString: ""))")
-                print("Day: \(day)")
-            }
-            print()
-            //notificationTimeSet.insert(date)
-        }
         tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Black
         nav?.barTintColor = UIColor.purpleColor()
@@ -135,22 +116,6 @@ class MedicationTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         //}
     }
-
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
