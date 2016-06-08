@@ -58,15 +58,15 @@ class TableViewController: UITableViewController{
             ){
             var medication = MedicationItem(name: medicationNameTextBox.text!,
                                             time: numberOfTimesRightDetail.text!,
-                                            diet: timeAfterEatingDetail.text ?? " ",
+                                            diet: timeAfterEatingDetail.text ?? "",
                                             days: repeatRightDetail.text!,
-                                            reminder: reminderRightDetail.text ?? " ",
+                                            reminder: reminderRightDetail.text ?? "",
                                             UUID: NSUUID().UUIDString)
             medication.setTimesDictionary(timesDictionary)
             medication.setDaysSet(medicationDaysSet)
-            print("Times Dictionary: \(timesDictionary.keys) \(timesDictionary.values)")
-            print("Days Set: \(medicationDaysSet)")
-            print("Medication \(medication)")
+//            print("Times Dictionary: \(timesDictionary.keys) \(timesDictionary.values)")
+//            print("Days Set: \(medicationDaysSet)")
+//            print("Medication \(medication)")
             MedicationItemList.sharedInstance.addItem(medication)
             
         }
@@ -81,7 +81,6 @@ class TableViewController: UITableViewController{
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("TableView Did Appear Animated")
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -93,6 +92,10 @@ class TableViewController: UITableViewController{
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
         print("Unwind action was called")
+//        let source = unwindSegue.sourceViewController
+//        let destination = unwindSegue.destinationViewController
+//        print("Unwind Segue: \(source)")
+//        print("Unwind Segue: \(destination)")
         tableView.reloadData()
     }
     

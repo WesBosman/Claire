@@ -40,6 +40,10 @@ class TimesPerDayTableViewController: UITableViewController {
         timeTwoDatePicker.datePickerMode = UIDatePickerMode.Time
         timeThreeDatePicker.datePickerMode = UIDatePickerMode.Time
         
+        timeOneDetailLabel.text = ""
+        timeTwoDetailLabel.text = ""
+        timeThreeDetailLabel.text = ""
+        
         // Set date pickers to initial values
         timeFormat.dateFormat = "h:mm a"
         let defaultStartTime = timeFormat.dateFromString("7:00 AM")
@@ -56,21 +60,21 @@ class TimesPerDayTableViewController: UITableViewController {
     
     func toggleTimeOneTitle(){
         timeOneTitleIsHidden = !timeOneTitleIsHidden
-        timeOneDetailLabel.text = "7:00 AM"
+        //timeOneDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleTimeTwoTitle(){
         timeTwoTitleIsHidden = !timeTwoTitleIsHidden
-        timeTwoDetailLabel.text = "7:00 AM"
+        //timeTwoDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleTimeThreeTitle(){
         timeThreeTitleIsHidden = !timeThreeTitleIsHidden
-        timeThreeDetailLabel.text = "7:00 AM"
+        //timeThreeDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -138,12 +142,15 @@ class TimesPerDayTableViewController: UITableViewController {
             toggleCheckmark(tableView, indexPath: indexPath)
             if indexPath.row == 0{
                 toggleTimeOneTitle()
+                timeOneDetailLabel.text = "7:00 AM"
             }
             else if indexPath.row == 1{
                 toggleTimeTwoTitle()
+                timeTwoDetailLabel.text = "7:00 AM"
             }
             else if indexPath.row == 2{
                 toggleTimeThreeTitle()
+                timeThreeDetailLabel.text = "7:00 AM"
             }
         }
         else if indexPath.section == 1 && indexPath.row == 0{
@@ -256,23 +263,28 @@ class TimesPerDayTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        print("Segue ID: \(segue.identifier)")
+//        print("Segue ID: \(segue.identifier)")
+//        print("Time one : \(timeOneDetailLabel.text)")
+//        print("Time two : \(timeTwoDetailLabel.text)")
+//        print("Time three: \(timeThreeDetailLabel.text)")
+        
         if segue.identifier! == "UnwindTimesPerDay"{
             let destination = segue.destinationViewController as! TableViewController
             var times:String = ""
             if (!timeOneDetailLabel.text!.isEmpty){
-                times += timeOneDetailLabel.text! + ", "
+                times += timeOneDetailLabel.text! + " "
                 timeDictionary["timeOne"] = timeOneDetailLabel.text!
             }
-            else if (!timeTwoDetailLabel.text!.isEmpty){
-                times += timeTwoDetailLabel.text! + ", "
+            if (!timeTwoDetailLabel.text!.isEmpty){
+                times += timeTwoDetailLabel.text! + " "
                 timeDictionary["timeTwo"] = timeTwoDetailLabel.text!
             }
-            else if (!timeThreeDetailLabel.text!.isEmpty){
+            if (!timeThreeDetailLabel.text!.isEmpty){
                 times += timeThreeDetailLabel.text!
                 timeDictionary["timeThree"] = timeThreeDetailLabel.text!
             }
-            print("TimesPerDay Segue: \(times)")
+//            print("TimesPerDay Segue: \(times)")
+//            print("Time Dictionary: \(timeDictionary.keys) \(timeDictionary.values)")
             destination.numberOfTimesRightDetail.text = times
             destination.timesDictionary = timeDictionary
         }

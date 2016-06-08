@@ -131,12 +131,12 @@ class AddReminderTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        print("Segue Id: \(segue.identifier!)")
+//        print("Segue Id: \(segue.identifier!)")
         if segue.identifier! == "UnwindAddReminder" {
             let destination = segue.destinationViewController as! TableViewController
             destination.reminderRightDetail.text = setTimeDetailLabel.text!
             destination.viewWillAppear(true)
-            print("Set Time Label: \(setTimeDetailLabel.text!)")
+//            print("Set Time Label: \(setTimeDetailLabel.text!)")
         }
     }
 

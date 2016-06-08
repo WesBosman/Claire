@@ -14,6 +14,7 @@
 		DE2B1D7E1D07748C0069761D /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7D1D07748C0069761D /* MedicationCell.swift */; };
 		DE2B1D801D0798E30069761D /* MedicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7F1D0798E30069761D /* MedicationItem.swift */; };
 		DE2B1D821D079A810069761D /* MedicationItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D811D079A810069761D /* MedicationItemList.swift */; };
+		DE2B1D861D085D2C0069761D /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */; };
 		DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B93F1D00CD0700401332 /* AppDelegate.swift */; };
 		DE96B9451D00CD0700401332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9431D00CD0700401332 /* Main.storyboard */; };
 		DE96B9471D00CD0700401332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9461D00CD0700401332 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		DE2B1D7D1D07748C0069761D /* MedicationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		DE2B1D7F1D0798E30069761D /* MedicationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationItem.swift; sourceTree = "<group>"; };
 		DE2B1D811D079A810069761D /* MedicationItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationItemList.swift; sourceTree = "<group>"; };
+		DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		DE96B93C1D00CD0700401332 /* Claire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE96B93F1D00CD0700401332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE96B9441D00CD0700401332 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				DE96B96D1D00D4B000401332 /* TableViewController.swift */,
 				DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */,
 				DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */,
+				DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */,
 				DE96B9431D00CD0700401332 /* Main.storyboard */,
 				DE96B9461D00CD0700401332 /* Assets.xcassets */,
 				DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */,
@@ -280,6 +283,7 @@
 			files = (
 				DE2736281D069A12000583A7 /* AddReminderTableViewController.swift in Sources */,
 				DE2B1D7E1D07748C0069761D /* MedicationCell.swift in Sources */,
+				DE2B1D861D085D2C0069761D /* ResultTableViewController.swift in Sources */,
 				DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */,
 				DE2B1D801D0798E30069761D /* MedicationItem.swift in Sources */,
 				DE96B96E1D00D4B000401332 /* TableViewController.swift in Sources */,

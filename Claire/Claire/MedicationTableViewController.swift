@@ -16,6 +16,8 @@ import UIKit
 class MedicationTableViewController: UITableViewController {
     var medItemList: [MedicationItem] = []
     var notificationTimeSet = Set<NSDate>()
+    var reminderSwitchOn = false
+    var dietSwitchOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class MedicationTableViewController: UITableViewController {
     func refreshList(){
         medItemList = MedicationItemList.sharedInstance.allMeds()
         let date:NSDate = NSDate()
-        let format:NSDateFormatter = NSDateFormatter()
+        //let format:NSDateFormatter = NSDateFormatter()
         
         for med in medItemList{
             //date = format.dateFromString(med.medicationTimes)!
@@ -95,21 +97,20 @@ class MedicationTableViewController: UITableViewController {
         cell.medicationName.text = medicationItem.medicationName
         cell.medicationDays.text = medicationItem.medicationDays
         cell.medicationTimes.text = medicationItem.medicationTimes
-
-        if !(medicationItem.reminderTime! == ""){
-            cell.medicationReminder.text = "reminder: off"
-            print("medication reminder on: \(medicationItem.reminderTime)")
-        }
-        else{
+        
+        // If medication time and diet are not empty print that they are on
+        if !(medicationItem.reminderTime!.isEmpty){
             cell.medicationReminder.text = "reminder: on"
         }
+        else{
+            cell.medicationReminder.text = "reminder: off"
+        }
         
-        if !(medicationItem.medicationDietTime! == ""){
-            cell.medicationDiet.text = "diet: off"
-            print("diet on: \(medicationItem.medicationDietTime)")
+        if !(medicationItem.medicationDietTime!.isEmpty){
+            cell.medicationDiet.text = "diet: on"
         }
         else{
-            cell.medicationDiet.text = "diet: on"
+            cell.medicationDiet.text = "diet: off"
         }
 
         return cell

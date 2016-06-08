@@ -29,13 +29,40 @@ class MedicationItemList{
         
         // Save or Overwrite information in the dictionary
         NSUserDefaults.standardUserDefaults().setObject(medDictionary, forKey: MED_KEY)
-        // Do not think I need to create a local notification.
+        // I need to create a local notification.
+        let notification = UILocalNotification()
+        notification.alertBody = "Time to take medication \(item.medicationName)"
+        notification.applicationIconBadgeNumber += 1
+        notification.alertAction = "open"
+        var newDate:String
+//        let makeDate: NSDateComponents
+//        var calendar: NSCalendar
+//        let format = NSDateComponentsFormatter()
+        
+        for day in item.arrayOfDays{
+            for time in item.arrayOfTimes.values{
+                //print("Notification Time: \(time)")
+                newDate = day + " " + time
+                
+                //notification.fireDate = format.dateFromString(newDate)
+                print("New Notification Date: \(newDate)")
+            }
+        }
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["NotificationUUID": item.uuid]
+        notification.category = "MEDICATION_CATEGORY"
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
     // Function to remove items from the dictionary
     func removeItem(item: MedicationItem){
         // Do not think I need a notification deletion here but maybe
-        
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications!{
+            if notification.userInfo!["NotificationUUID"] as! String == item.uuid{
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                break
+            }
+        }
         if var meds = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY){
             meds.removeValueForKey(item.uuid)
             // Save item
