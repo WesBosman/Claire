@@ -25,11 +25,6 @@ class AddReminderTableViewController: UITableViewController {
         reminderSwitch.tintColor = UIColor.purpleColor()
         reminderSwitch.setOn(false, animated: true)
 
-        // Uncomment the following line to preserve selection between presentations
-        //self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     
@@ -42,24 +37,13 @@ class AddReminderTableViewController: UITableViewController {
         togglePickerTitle()
     }
     
-//    @IBAction func saveButtonPressed(sender: AnyObject) {
-//        let timerString = setTimeDetailLabel.text
-//        print("Timer String: \(timerString)")
-//        //self.navigationController?.popViewControllerAnimated(true)
-//    }
-    
     func togglePickerTitle(){
         timePickerTitle = !timePickerTitle
         timePickerHidden = !timePickerHidden
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-    
-//    func togglePicker(){
-//        timePickerHidden = !timePickerHidden
-//        tableView.beginUpdates()
-//        tableView.endUpdates()
-//    }
+
     
     @IBAction func timePickerHasChanged(sender: AnyObject) {
         let str = timeFormat.stringFromDate(reminderDatePicker.date)

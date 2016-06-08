@@ -10,17 +10,18 @@ import UIKit
 
 class TableViewController: UITableViewController{
 
-    @IBOutlet weak var dayAndNightSwitch: UISwitch!
     @IBOutlet weak var dietSwitch: UISwitch!
     @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
-    private var timeToTakeMedicationHidden = false
-    private var medicationNameHidden = false
-    private var repeatingPickerHidden = false
     @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
     @IBOutlet weak var medicationNameTextBox: UITextField!
     @IBOutlet weak var numberOfTimesRightDetail: UILabel!
     @IBOutlet weak var repeatRightDetail: UILabel!
     @IBOutlet weak var reminderRightDetail: UILabel!
+    @IBOutlet weak var timeAfterEatingDetail: UILabel!
+    @IBOutlet weak var timeAfterEatingPicker: UIDatePicker!
+    var timeAfterEatingFormat = NSDateFormatter()
+    var timeAfterEatingTitleHidden = false
+    var timeAfterEatingPickerHidden = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +30,47 @@ class TableViewController: UITableViewController{
         numberOfTimesRightDetail.text = nil
         reminderRightDetail.text = nil
         repeatRightDetail.text = nil
-        dayAndNightSwitch.tintColor = UIColor.purpleColor()
-        dayAndNightSwitch.onTintColor = UIColor.purpleColor()
-        dayAndNightSwitch.setOn(false, animated: true)
+        timeAfterEatingDetail.text = nil
         dietSwitch.tintColor = UIColor.purpleColor()
         dietSwitch.onTintColor = UIColor.purpleColor()
         dietSwitch.setOn(false, animated: true)
+        timeAfterEatingFormat.dateFormat = "HH:mm"
+        timeAfterEatingPicker.datePickerMode = UIDatePickerMode.CountDownTimer
+        toggleTimeAfterEating()
+        toggleTimeAfterEatingPicker()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        
+        // If the name and the times and repeat are not null then continue.
+        if (!medicationNameTextBox.text!.isEmpty && !numberOfTimesRightDetail.text!.isEmpty
+            //&& !timeAfterEatingDetail.text!.isEmpty 
+            && !repeatRightDetail.text!.isEmpty
+            //&& !reminderRightDetail.text!.isEmpty
+            ){
+            let medication = MedicationItem(name: medicationNameTextBox.text!,
+                                            time: numberOfTimesRightDetail.text!,
+                                            diet: timeAfterEatingDetail.text ?? " ",
+                                            days: repeatRightDetail.text!,
+                                            reminder: reminderRightDetail.text ?? " ",
+                                            UUID: NSUUID().UUIDString)
+            print("Medication \(medication)")
+            MedicationItemList.sharedInstance.addItem(medication)
+            
+        }
+        else{
+            let alert:UIAlertController = UIAlertController(title: "Missing A Field", message: "One or more of the reqired fields marked with an asterisk has not been filled in", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                // Essentially do nothing. Unless we want to print some sort of log message.
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,34 +88,56 @@ class TableViewController: UITableViewController{
         print("Unwind action was called")
         tableView.reloadData()
     }
+    
+    @IBAction func waitAfterEatingChanged(sender: AnyObject) {
+        let str = timeAfterEatingFormat.stringFromDate(timeAfterEatingPicker.date)
+        timeAfterEatingDetail.text = str
+    }
 
-    /**
+    @IBAction func dietAction(sender: AnyObject) {
+        toggleTimeAfterEating()
+        toggleTimeAfterEatingPicker()
+    }
+    
+    func toggleTimeAfterEating(){
+        timeAfterEatingTitleHidden = !timeAfterEatingTitleHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func toggleTimeAfterEatingPicker(){
+        timeAfterEatingPickerHidden = !timeAfterEatingPickerHidden
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Toggle the date picker to select a time to take the medication.
-        if indexPath.section == 1 && indexPath.row == 0{
-            toggleTakeMedicationPicker()
-        }
-        // Toggle the repeat picker
-        else if indexPath.section == 3 && indexPath.row == 0{
-            toggleRepeatingPicker()
+        // Toggle the date picker for diet switch
+        if indexPath.section == 2 && indexPath.row == 1{
+            toggleTimeAfterEatingPicker()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Hide the time picker for the medication
-        if timeToTakeMedicationHidden && indexPath.section == 1 && indexPath.row == 1{
+        // Hide the time after eating title
+        if dietSwitch.on == false && timeAfterEatingTitleHidden
+            && indexPath.section == 2 && indexPath.row == 1{
             return 0
         }
-        // Hide the repeating picker
-        else if repeatingPickerHidden && indexPath.section == 3 && indexPath.row == 1{
+        // Hide the time after eating picker
+        else if dietSwitch.on == false && timeAfterEatingPickerHidden
+            && indexPath.section == 2 && indexPath.row == 2{
+            return 0
+        }
+        // Hide the time after eating picker not based on the switch
+        else if timeAfterEatingPickerHidden && indexPath.section == 2 && indexPath.row == 2{
             return 0
         }
         
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
-        
     }
-    */
 
     // MARK: - Table view data source
     /*
@@ -144,14 +196,16 @@ class TableViewController: UITableViewController{
     }
     */
 
-    /*
     // MARK: - Navigation
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier! == "UnwindMedicationSegue"{
+            
+
+        }
     }
     */
-
 }
