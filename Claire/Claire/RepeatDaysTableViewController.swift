@@ -119,6 +119,7 @@ class RepeatDaysTableViewController: UITableViewController {
         if segue.identifier! == "UnwindAddDays"{
             let destination = segue.destinationViewController as! TableViewController
             destination.repeatRightDetail.text = listOfDaysAsString
+            destination.medicationDaysSet = listOfDays
             print("List of Days as String: \(listOfDaysAsString)")
             print("List of days: \(listOfDays)")
             

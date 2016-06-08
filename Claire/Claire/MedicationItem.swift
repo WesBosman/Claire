@@ -15,6 +15,8 @@ struct MedicationItem{
     var medicationDays:String
     var reminderTime:String?
     var uuid:String
+    var arrayOfDays:Set<String> = []
+    var arrayOfTimes:Dictionary<String, String> = [:]
     
     init(name:String, time:String, diet: String?, days: String, reminder:String?, UUID:String){
         self.medicationName = name
@@ -23,5 +25,15 @@ struct MedicationItem{
         self.medicationDietTime = diet ?? " "
         self.reminderTime = reminder ?? " "
         self.uuid = UUID
+        self.arrayOfTimes = [:]
+        self.arrayOfDays = []
+    }
+    
+    mutating func setDaysSet(days:Set<String>){
+        self.arrayOfDays = days
+    }
+    
+    mutating func setTimesDictionary(times:Dictionary<String, String>){
+        self.arrayOfTimes = times
     }
 }

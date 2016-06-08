@@ -23,6 +23,7 @@ class TimesPerDayTableViewController: UITableViewController {
     @IBOutlet weak var timeOneDetailLabel: UILabel!
     @IBOutlet weak var timeTwoDetailLabel: UILabel!
     @IBOutlet weak var timeThreeDetailLabel: UILabel!
+    var timeDictionary: Dictionary<String, String> = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,16 +260,21 @@ class TimesPerDayTableViewController: UITableViewController {
         if segue.identifier! == "UnwindTimesPerDay"{
             let destination = segue.destinationViewController as! TableViewController
             var times:String = ""
-            if timeOneDetailLabel.text != nil{
+            if (!timeOneDetailLabel.text!.isEmpty){
                 times += timeOneDetailLabel.text! + ", "
+                timeDictionary["timeOne"] = timeOneDetailLabel.text!
             }
-            else if timeTwoDetailLabel.text != nil{
+            else if (!timeTwoDetailLabel.text!.isEmpty){
                 times += timeTwoDetailLabel.text! + ", "
+                timeDictionary["timeTwo"] = timeTwoDetailLabel.text!
             }
-            else if timeThreeDetailLabel.text != nil{
+            else if (!timeThreeDetailLabel.text!.isEmpty){
                 times += timeThreeDetailLabel.text!
+                timeDictionary["timeThree"] = timeThreeDetailLabel.text!
             }
+            print("TimesPerDay Segue: \(times)")
             destination.numberOfTimesRightDetail.text = times
+            destination.timesDictionary = timeDictionary
         }
     }
 }

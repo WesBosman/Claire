@@ -51,9 +51,9 @@ class MedicationItemList{
         return medItems.map({MedicationItem(
             name: $0["name"] as! String,
             time: $0["times"] as! String,
-            diet: $0["diet"] as? String ?? " ",
+            diet: $0["diet"] as? String ?? "",
             days: $0["days"] as! String,
-            reminder: $0["reminder"] as? String ?? " ",
+            reminder: $0["reminder"] as? String ?? "",
             UUID: $0["UUID"] as! String
             )})
             .sort({(left: MedicationItem, right: MedicationItem) -> Bool in (left.medicationName.compare(right.medicationName) == .OrderedAscending)})

@@ -15,11 +15,13 @@ import UIKit
 
 class MedicationTableViewController: UITableViewController {
     var medItemList: [MedicationItem] = []
+    var notificationTimeSet = Set<NSDate>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         medItemList = MedicationItemList.sharedInstance.allMeds()
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: #selector(self.refreshList), name: "medicationList", object: nil)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -28,13 +30,31 @@ class MedicationTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
+    func refreshList(){
+        medItemList = MedicationItemList.sharedInstance.allMeds()
+        let date:NSDate = NSDate()
+        let format:NSDateFormatter = NSDateFormatter()
+        
+        for med in medItemList{
+            //date = format.dateFromString(med.medicationTimes)!
+            print("date : \(date)")
+            print()
+            for day in med.arrayOfDays{
+                print("medication date: \(med.medicationDays) \(med.medicationTimes.stringByReplacingOccurrencesOfString(",", withString: ""))")
+                print("Day: \(day)")
+            }
+            print()
+            //notificationTimeSet.insert(date)
+        }
+        tableView.reloadData()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Black
         nav?.barTintColor = UIColor.purpleColor()
         nav?.tintColor = UIColor.whiteColor()
-        medItemList = MedicationItemList.sharedInstance.allMeds()
-        tableView.reloadData()
+        refreshList()
         
     }
 

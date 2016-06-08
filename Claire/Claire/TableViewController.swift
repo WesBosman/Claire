@@ -22,6 +22,9 @@ class TableViewController: UITableViewController{
     var timeAfterEatingFormat = NSDateFormatter()
     var timeAfterEatingTitleHidden = false
     var timeAfterEatingPickerHidden = false
+    var medicationDaysSet: Set<String> = []
+    var timesDictionary: Dictionary<String, String> = [:]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +56,16 @@ class TableViewController: UITableViewController{
             && !repeatRightDetail.text!.isEmpty
             //&& !reminderRightDetail.text!.isEmpty
             ){
-            let medication = MedicationItem(name: medicationNameTextBox.text!,
+            var medication = MedicationItem(name: medicationNameTextBox.text!,
                                             time: numberOfTimesRightDetail.text!,
                                             diet: timeAfterEatingDetail.text ?? " ",
                                             days: repeatRightDetail.text!,
                                             reminder: reminderRightDetail.text ?? " ",
                                             UUID: NSUUID().UUIDString)
+            medication.setTimesDictionary(timesDictionary)
+            medication.setDaysSet(medicationDaysSet)
+            print("Times Dictionary: \(timesDictionary.keys) \(timesDictionary.values)")
+            print("Days Set: \(medicationDaysSet)")
             print("Medication \(medication)")
             MedicationItemList.sharedInstance.addItem(medication)
             
