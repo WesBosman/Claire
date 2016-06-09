@@ -8,7 +8,20 @@
 
 import UIKit
 
-class TableViewController: UITableViewController{
+//  Found this extension on stack overflow from Esqarrouth
+extension UITableViewController {
+    // This interferes with selecting rows of the table view. Otherwise cool.
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UITableViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    // This works fine
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+class TableViewController: UITableViewController, UITextFieldDelegate{
 
     @IBOutlet weak var dietSwitch: UISwitch!
     @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
@@ -25,15 +38,15 @@ class TableViewController: UITableViewController{
     var medicationDaysSet: Set<String> = []
     var timesDictionary: Dictionary<String, String> = [:]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // We only want time for our date picker
+        medicationNameTextBox.delegate = self
         medicationNameTextBox.placeholder = "Name of Medication"
-        numberOfTimesRightDetail.text = nil
-        reminderRightDetail.text = nil
-        repeatRightDetail.text = nil
-        timeAfterEatingDetail.text = nil
+        numberOfTimesRightDetail.text = ""
+        reminderRightDetail.text = ""
+        repeatRightDetail.text = ""
+        timeAfterEatingDetail.text = ""
         dietSwitch.tintColor = UIColor.purpleColor()
         dietSwitch.onTintColor = UIColor.purpleColor()
         dietSwitch.setOn(false, animated: true)
@@ -45,9 +58,21 @@ class TableViewController: UITableViewController{
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    // Function for hiding the keyboard when the return key is pressed.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.dismissKeyboard()
+        return true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Black
+        nav?.barTintColor = UIColor.purpleColor()
+        nav?.tintColor = UIColor.whiteColor()
+    }
+    
     @IBAction func saveButtonPressed(sender: AnyObject) {
         
         // If the name and the times and repeat are not null then continue.
@@ -91,11 +116,7 @@ class TableViewController: UITableViewController{
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
-        print("Unwind action was called")
-//        let source = unwindSegue.sourceViewController
-//        let destination = unwindSegue.destinationViewController
-//        print("Unwind Segue: \(source)")
-//        print("Unwind Segue: \(destination)")
+        //print("Unwind action was called")
         tableView.reloadData()
     }
     

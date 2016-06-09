@@ -20,9 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // Think this changes the color of the subtitle text to red once the time has passed.
+    // If the user is already inside of the application the display an alert message
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        // Get the state of the application and if the app is running then display an alert message.
+        let state: UIApplicationState = UIApplication.sharedApplication().applicationState
+        var host = self.window?.rootViewController
+        
+        if state == UIApplicationState.Active{
+            let alert: UIAlertController = UIAlertController(title: "Alert", message: "Time to take your medication", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                // Essentially do nothing. Unless we want to print some sort of log message.
+            }))
+            while let next = window?.inputViewController{
+                host = next
+            }
+            host?.presentViewController(alert, animated: true, completion: nil)
+        }
+        // Post notification reset the icon badge number
         NSNotificationCenter.defaultCenter().postNotificationName("medicationList", object: self)
+        application.applicationIconBadgeNumber = 0
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -16,15 +16,24 @@ import UIKit
 class MedicationTableViewController: UITableViewController {
     var medItemList: [MedicationItem] = []
     var notificationTimeSet = Set<NSDate>()
-    var reminderSwitchOn = false
     var dietSwitchOn = false
+    var reminderString: String = ""
+    var dietString: String = ""
+    var editName: String = ""
+    var editTime: String = ""
+    var editReminder: String = ""
+    var editDay: String = ""
+    var editDiet:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //medItemList = MedicationItemList.sharedInstance.allMeds()
+
         NSNotificationCenter.defaultCenter()
             .addObserver(self, selector: #selector(MedicationTableViewController.refreshList), name: "medicationList", object: nil)
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.tableView.allowsSelection = false
+        self.tableView.allowsSelectionDuringEditing = true
+        tableView.delegate = self
     }
     
     func refreshList(){
@@ -46,7 +55,6 @@ class MedicationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -59,29 +67,25 @@ class MedicationTableViewController: UITableViewController {
         return medItemList.count
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = indexPath.row
-        print("row selection: \(row)")
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
- 
-
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MedicationCells", forIndexPath: indexPath) as! MedicationCell
         let medicationItem = medItemList[indexPath.row]
         // Configure the cell...
         cell.medicationName.text = medicationItem.medicationName
+        editName = medicationItem.medicationName
         cell.medicationDays.text = medicationItem.medicationDays
+        editDay = medicationItem.medicationDays
         cell.medicationTimes.text = medicationItem.medicationTimes
+        editTime = medicationItem.medicationTimes
         
         // If medication time and diet are not empty print that they are on
         if !(medicationItem.reminderTime!.isEmpty){
             cell.medicationReminder.text = "reminder: on"
+            reminderString = medicationItem.reminderTime!
         }
         else{
             cell.medicationReminder.text = "reminder: off"
@@ -89,6 +93,8 @@ class MedicationTableViewController: UITableViewController {
         
         if !(medicationItem.medicationDietTime!.isEmpty){
             cell.medicationDiet.text = "diet: on"
+            dietSwitchOn = true
+            dietString = medicationItem.medicationDietTime!
         }
         else{
             cell.medicationDiet.text = "diet: off"
@@ -112,19 +118,40 @@ class MedicationTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             MedicationItemList.sharedInstance.removeItem(itemToDelete)
         }
+        
         //else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         //}
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        print("Prepare for segue called for medication table view controller")
+        if segue.identifier == "editMedicationSegue"{
+            print("edit medication segue taken")
+            // get the information from the cell that was selected. 
+            let destination = segue.destinationViewController as! TableViewController
+            print("Destination: \(destination)")
+            print("Name: \(editName)")
+            print("Diet Switch on: \(dietSwitchOn)")
+            print("Days: \(editDay)")
+            print("Reminder: \(reminderString)")
+            print("Diet: \(dietString)")
+            //destination.medicationNameTextBox.text = editName
+            //destination.dietSwitch.on = dietSwitchOn
+            //destination.repeatRightDetail.text = editDay
+            //destination.reminderRightDetail.text = reminderString
+            //destination.timeAfterEatingDetail.text = dietString
+            
+            
+        }
+        else if segue.identifier == "addMedicationSegue"{
+            print("Add medication segue taken")
+        }
     }
-    */
-
+    
 }

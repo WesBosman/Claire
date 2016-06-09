@@ -28,8 +28,13 @@ class MedicationItemList{
         
         // Save or Overwrite information in the dictionary
         NSUserDefaults.standardUserDefaults().setObject(medDictionary, forKey: MED_KEY)
+        // Make a notiication.
+        setNotificationTimes(item)
         
-        // Set up the dates and formating for the notifications. 
+    }
+    
+    func setNotificationTimes(item: MedicationItem){
+        // Set up the dates and formating for the notifications.
         var newDate: String
         var newDateArray = [NSDate]()
         let format = NSDateFormatter()
@@ -45,17 +50,24 @@ class MedicationItemList{
             }
         }
         
+        var notificationArray = [UILocalNotification()]
+//        var count: Int = 0
+        
         for newDay in newDateArray{
+//            count += 1
             print("New Day: \(newDay)")
             let notification = UILocalNotification()
+            notification.timeZone = NSTimeZone.localTimeZone()
+            notification.repeatInterval = NSCalendarUnit.WeekOfYear
             notification.alertBody = "Time to take medication \(item.medicationName)"
-            notification.applicationIconBadgeNumber += 1
+            notification.applicationIconBadgeNumber = 1
             notification.alertAction = "open"
             notification.fireDate = newDay
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.userInfo = ["NotificationUUID": item.uuid]
             notification.category = "MEDICATION_CATEGORY"
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            notificationArray.append(notification)
         }
     }
     
