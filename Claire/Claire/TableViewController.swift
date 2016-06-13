@@ -37,23 +37,42 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     var timeAfterEatingPickerHidden = false
     var medicationDaysSet: Set<String> = []
     var timesDictionary: Dictionary<String, String> = [:]
+    var editName:String = ""
+    var editingDays:String = ""
+    var editRemember: String = ""
+    var editTimes:String = ""
+    var editDiet:String = ""
+    var editDietSwitchOn:Bool = false
+    var editingPreviousEntry = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // We only want time for our date picker
         medicationNameTextBox.delegate = self
-        medicationNameTextBox.placeholder = "Name of Medication"
-        numberOfTimesRightDetail.text = ""
-        reminderRightDetail.text = ""
-        repeatRightDetail.text = ""
-        timeAfterEatingDetail.text = ""
+        // if edit name is empty then set a placeholder
+        if editName.isEmpty{
+            medicationNameTextBox.placeholder = "Name of Medication"
+        }
+        // Otherwise set the previous value
+        else{
+            medicationNameTextBox.text = editName
+        }
+        
+        numberOfTimesRightDetail.text = editTimes
+        reminderRightDetail.text = editRemember
+        repeatRightDetail.text = editingDays
+        timeAfterEatingDetail.text = editDiet
         dietSwitch.tintColor = UIColor.purpleColor()
         dietSwitch.onTintColor = UIColor.purpleColor()
-        dietSwitch.setOn(false, animated: true)
+        dietSwitch.setOn(editDietSwitchOn, animated: true)
         timeAfterEatingFormat.dateFormat = "HH:mm"
         timeAfterEatingPicker.datePickerMode = UIDatePickerMode.CountDownTimer
         toggleTimeAfterEating()
         toggleTimeAfterEatingPicker()
+        
+        if editDietSwitchOn == true{
+            toggleTimeAfterEating()
+            toggleTimeAfterEatingPicker()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -75,6 +94,10 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
         
+        if editingPreviousEntry == true{
+            print("Editing Previous Entry")
+        }
+        
         // If the name and the times and repeat are not null then continue.
         if (!medicationNameTextBox.text!.isEmpty && !numberOfTimesRightDetail.text!.isEmpty
             //&& !timeAfterEatingDetail.text!.isEmpty 
@@ -89,7 +112,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
                                             UUID: NSUUID().UUIDString)
             medication.setTimesDictionary(timesDictionary)
             medication.setDaysSet(medicationDaysSet)
-//            print("Times Dictionary: \(timesDictionary.keys) \(timesDictionary.values)")
+            print("Times Dictionary: \(timesDictionary.keys) \(timesDictionary.values)")
 //            print("Days Set: \(medicationDaysSet)")
 //            print("Medication \(medication)")
             MedicationItemList.sharedInstance.addItem(medication)
@@ -102,7 +125,6 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -228,15 +250,13 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     */
 
     // MARK: - Navigation
-    /*
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier! == "UnwindMedicationSegue"{
-            
-
+        if segue.identifier == "saveSegue"{
+            saveButtonPressed(self)
         }
     }
-    */
 }

@@ -47,7 +47,10 @@ class MedicationTableViewController: UITableViewController {
         nav?.barTintColor = UIColor.purpleColor()
         nav?.tintColor = UIColor.whiteColor()
         refreshList()
-        
+    }
+    
+    @IBAction func unwindToHome(myUnwind: UIStoryboardSegue){
+        refreshList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +59,6 @@ class MedicationTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -130,23 +132,25 @@ class MedicationTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        print("Prepare for segue called for medication table view controller")
+
         if segue.identifier == "editMedicationSegue"{
             print("edit medication segue taken")
             // get the information from the cell that was selected. 
             let destination = segue.destinationViewController as! TableViewController
-            print("Destination: \(destination)")
-            print("Name: \(editName)")
-            print("Diet Switch on: \(dietSwitchOn)")
-            print("Days: \(editDay)")
-            print("Reminder: \(reminderString)")
-            print("Diet: \(dietString)")
-            //destination.medicationNameTextBox.text = editName
-            //destination.dietSwitch.on = dietSwitchOn
-            //destination.repeatRightDetail.text = editDay
-            //destination.reminderRightDetail.text = reminderString
-            //destination.timeAfterEatingDetail.text = dietString
+//            print("Destination: \(destination)")
+//            print("Name: \(editName)")
+//            print("Diet Switch on: \(dietSwitchOn)")
+//            print("Days: \(editDay)")
+//            print("Reminder: \(reminderString)")
+//            print("Diet: \(dietString)")
             
+            destination.editName = editName
+            destination.editingDays = editDay
+            destination.editRemember = editReminder
+            destination.editTimes = editTime
+            destination.editDietSwitchOn = dietSwitchOn
+            destination.editingPreviousEntry = true
+
             
         }
         else if segue.identifier == "addMedicationSegue"{

@@ -19,7 +19,7 @@ class MedicationItemList{
     func addItem(item: MedicationItem){
         // Create the dictionary object to hold my objects
         var medDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY) ?? Dictionary()
-        medDictionary[item.uuid] = ["name" : item.medicationName,
+        medDictionary[item.medicationName] = ["name" : item.medicationName,
                                     "times" : item.medicationTimes,
                                     "diet" : item.medicationDietTime ?? "",
                                     "days" : item.medicationDays ?? "",
@@ -75,13 +75,13 @@ class MedicationItemList{
     func removeItem(item: MedicationItem){
         // Do not think I need a notification deletion here but maybe
         for notification in UIApplication.sharedApplication().scheduledLocalNotifications!{
-            if notification.userInfo!["NotificationUUID"] as! String == item.uuid{
+            if notification.userInfo!["NotificationUUID"] as! String == item.medicationName{
                 UIApplication.sharedApplication().cancelLocalNotification(notification)
                 break
             }
         }
         if var meds = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY){
-            meds.removeValueForKey(item.uuid)
+            meds.removeValueForKey(item.medicationName)
             // Save item
             NSUserDefaults.standardUserDefaults().setObject(meds, forKey: MED_KEY)
         }
@@ -91,7 +91,7 @@ class MedicationItemList{
     func allMeds() -> [MedicationItem] {
         let medDict = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY) ?? [:]
         let medItems = Array(medDict.values)
-        //print("Medication Items \(medItems)")
+        print("Medication Items \(medItems)")
         return medItems.map({MedicationItem(
             name: $0["name"] as! String,
             time: $0["times"] as! String,
