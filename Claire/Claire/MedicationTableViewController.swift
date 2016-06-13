@@ -137,19 +137,26 @@ class MedicationTableViewController: UITableViewController {
             print("edit medication segue taken")
             // get the information from the cell that was selected. 
             let destination = segue.destinationViewController as! TableViewController
-//            print("Destination: \(destination)")
-//            print("Name: \(editName)")
-//            print("Diet Switch on: \(dietSwitchOn)")
-//            print("Days: \(editDay)")
-//            print("Reminder: \(reminderString)")
-//            print("Diet: \(dietString)")
+            if let selectedCell = sender as? MedicationCell{
+                let indexPath = tableView.indexPathForCell(selectedCell)!
+                let selectedMedication = medItemList[indexPath.row]
             
-            destination.editName = editName
-            destination.editingDays = editDay
-            destination.editRemember = editReminder
-            destination.editTimes = editTime
-            destination.editDietSwitchOn = dietSwitchOn
-            destination.editingPreviousEntry = true
+                destination.editName = selectedCell.medicationName.text!
+                destination.editingDays = selectedCell.medicationDays.text!
+                //destination.editRemember = selectedCell.medicationReminder.text!
+                destination.editTimes = selectedCell.medicationTimes.text!
+                if selectedCell.medicationReminder.text == "reminder: on"{
+                    destination.editRemember = selectedMedication.reminderTime!
+                }
+                else{
+                    destination.editRemember = ""
+                }
+                if selectedCell.medicationDiet.text == "diet: on"{
+                    destination.editDiet = selectedMedication.medicationDietTime!
+                    destination.editDietSwitchOn = true
+                }
+                destination.editingPreviousEntry = true
+            }
 
             
         }

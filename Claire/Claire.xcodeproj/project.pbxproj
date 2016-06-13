@@ -17,6 +17,8 @@
 		DE2B1D861D085D2C0069761D /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */; };
 		DE2B1D891D09EDBD0069761D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2B1D871D09EDBD0069761D /* Main.storyboard */; };
 		DE2B1D8B1D09FE7F0069761D /* EditMedicationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */; };
+		DE2B1D8D1D0E5D380069761D /* AddMedicationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */; };
+		DE2B1D8F1D0E5D740069761D /* FirstUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */; };
 		DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B93F1D00CD0700401332 /* AppDelegate.swift */; };
 		DE96B9471D00CD0700401332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9461D00CD0700401332 /* Assets.xcassets */; };
 		DE96B94A1D00CD0700401332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */; };
@@ -53,6 +55,8 @@
 		DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		DE2B1D881D09EDBD0069761D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMedicationNavigationController.swift; sourceTree = "<group>"; };
+		DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMedicationTest.swift; sourceTree = "<group>"; };
+		DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUITest.swift; sourceTree = "<group>"; };
 		DE96B93C1D00CD0700401332 /* Claire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE96B93F1D00CD0700401332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE96B9461D00CD0700401332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		DE96B9531D00CD0700401332 /* ClaireTests */ = {
 			isa = PBXGroup;
 			children = (
+				DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */,
 				DE96B9541D00CD0700401332 /* ClaireTests.swift */,
 				DE96B9561D00CD0700401332 /* Info.plist */,
 			);
@@ -146,6 +151,7 @@
 		DE96B95E1D00CD0700401332 /* ClaireUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */,
 				DE96B95F1D00CD0700401332 /* ClaireUITests.swift */,
 				DE96B9611D00CD0700401332 /* Info.plist */,
 			);
@@ -302,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2B1D8D1D0E5D380069761D /* AddMedicationTest.swift in Sources */,
 				DE96B9551D00CD0700401332 /* ClaireTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2B1D8F1D0E5D740069761D /* FirstUITest.swift in Sources */,
 				DE96B9601D00CD0700401332 /* ClaireUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
