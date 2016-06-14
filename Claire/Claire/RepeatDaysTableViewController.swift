@@ -54,7 +54,13 @@ class RepeatDaysTableViewController: UITableViewController {
         let today = NSDate()
         let todayComponent = calendar.components([.Day, .Month, .Year], fromDate: today)
         
-        // range of dates
+        // Range of Days
+        let till = NSCalendar.currentCalendar().dateWithEra(1, year: todayComponent.year + 1, month: todayComponent.month, day: todayComponent.day, hour: todayComponent.hour, minute: todayComponent.minute, second: todayComponent.second, nanosecond: todayComponent.nanosecond)!
+        
+        // Used to calculate a year in advance. 
+        let time = NSCalendar.currentCalendar().components(.Day, fromDate: today, toDate: till, options: .MatchNextTime)
+        
+        // range of dates to get day intervals from
         let thisWeekDateRange = calendar.rangeOfUnit(.Day, inUnit: .Year , forDate:today)
         
         // date interval from today to beginning of week
@@ -64,12 +70,12 @@ class RepeatDaysTableViewController: UITableViewController {
         let beginningOfWeek = calendar.dateByAddingUnit(.Day, value: dayInterval, toDate: today, options: .MatchNextTime)
         
         var formattedDays: [String] = []
-        // This will let us calculate from todays date to every other date after it.
-        let rangeStartingToday = thisWeekDateRange.length + todayComponent.day - 1
-        print(todayComponent.day)
-        print(thisWeekDateRange.length)
         
-        for i in todayComponent.day - 1 ... rangeStartingToday{
+        // This will let us calculate from todays date to a year in the future
+        let yearStartingToday = (time.day + 14)
+        
+        
+        for i in (todayComponent.day - 1) ... yearStartingToday{
             // Get the strings of the days we want to set reminders for.
             for dayz in listOfDays{
                 let date = calendar.dateByAddingUnit(.Day, value: i, toDate: beginningOfWeek!, options: .MatchNextTime)!
