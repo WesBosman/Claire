@@ -22,7 +22,6 @@ extension UITableViewController {
 }
 
 class TableViewController: UITableViewController, UITextFieldDelegate{
-
     @IBOutlet weak var dietSwitch: UISwitch!
     @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
     @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
@@ -44,6 +43,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     var editDiet:String = ""
     var editDietSwitchOn:Bool = false
     var editingPreviousEntry = false
+    var editingMedication:MedicationItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +97,10 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         
         if editingPreviousEntry == true{
             print("Editing Previous Entry")
+//            let oldMedList = MedicationItemList.sharedInstance.allMeds()
+//            let newMedList = MedicationItemList.sharedInstance.removeItem(editingMedication!)
+//            //print(oldMedList)
+//            print(newMedList)
         }
         
         // If the name and the times and repeat are not null then continue.
@@ -113,9 +117,6 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
                                             UUID: NSUUID().UUIDString)
             medication.setTimesDictionary(timesDictionary)
             medication.setDaysSet(medicationDaysSet)
-            print("Times Dictionary: \(timesDictionary.keys) \(timesDictionary.values)")
-//            print("Days Set: \(medicationDaysSet)")
-//            print("Medication \(medication)")
             MedicationItemList.sharedInstance.addItem(medication)
             
         }

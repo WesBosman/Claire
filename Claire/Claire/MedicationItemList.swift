@@ -18,6 +18,7 @@ class MedicationItemList{
     // Add item to the dictionary
     func addItem(item: MedicationItem){
         // Create the dictionary object to hold my objects
+        // Do not think I need UUID's for these objects since I do not expect the names to ever be the same.
         var medDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY) ?? Dictionary()
         medDictionary[item.medicationName] = ["name" : item.medicationName,
                                     "times" : item.medicationTimes,
@@ -44,18 +45,16 @@ class MedicationItemList{
             for time in item.arrayOfTimes.values{
                 newDate = day + " " + time
                 let newNSDate = format.dateFromString(newDate)
-                print("New NSDate: \(newNSDate)")
+//                print("New NSDate: \(newNSDate)")
                 newDateArray.append(newNSDate!)
-                print("New Date Array: \(newDateArray)")
+//                print("New Date Array: \(newDateArray)")
             }
         }
         
         var notificationArray = [UILocalNotification()]
-//        var count: Int = 0
         
         for newDay in newDateArray{
-//            count += 1
-            print("New Day: \(newDay)")
+//            print("New Day: \(newDay)")
             let notification = UILocalNotification()
             notification.timeZone = NSTimeZone.localTimeZone()
             notification.repeatInterval = NSCalendarUnit.WeekOfYear
@@ -64,7 +63,7 @@ class MedicationItemList{
             notification.alertAction = "open"
             notification.fireDate = newDay
             notification.soundName = UILocalNotificationDefaultSoundName
-            notification.userInfo = ["NotificationUUID": item.uuid]
+            notification.userInfo = ["NotificationUUID": item.medicationName]
             notification.category = "MEDICATION_CATEGORY"
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             notificationArray.append(notification)

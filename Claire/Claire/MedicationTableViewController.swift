@@ -140,7 +140,8 @@ class MedicationTableViewController: UITableViewController {
             if let selectedCell = sender as? MedicationCell{
                 let indexPath = tableView.indexPathForCell(selectedCell)!
                 let selectedMedication = medItemList[indexPath.row]
-            
+                
+                destination.editingMedication = selectedMedication
                 destination.editName = selectedCell.medicationName.text!
                 destination.editingDays = selectedCell.medicationDays.text!
                 //destination.editRemember = selectedCell.medicationReminder.text!
