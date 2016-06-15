@@ -9,15 +9,15 @@
 import Foundation
 
 struct MedicationItem{
-    var medicationName:String
+    var medicationName: String
     var medicationTimes:String
-    var medicationDays:String
+    var medicationDays: String
     var reminderOne: [Int]
     var reminderTwo: [Int]
     var reminderThree: [Int]
-    var uuid:String
+    var uuid: String
     var listOfDays:[String] = []
-    var dictionaryOfTimes:Dictionary<String, String> = [:]
+    var dictionaryOfTimes: Dictionary<String, String> = [:]
     
     init(name:String, time:String, days: String, reminderOne:[Int], reminderTwo:[Int], reminderThree: [Int], UUID:String){
         self.medicationName = name

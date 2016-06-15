@@ -20,10 +20,9 @@ class MedicationItemList{
         // Create the dictionary object to hold my objects
         // Do not think I need UUID's for these objects since I do not expect the names to ever be the same.
         var medDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY) ?? Dictionary()
-        medDictionary[item.medicationName] = ["name" : item.medicationName,
+        medDictionary[item.uuid] = ["name" : item.medicationName,
                                     "times" : item.medicationTimes,
-//                                    "diet" : item.medicationDietTime ?? "",
-                                    "days" : item.medicationDays ?? "",
+                                    "days" : item.medicationDays,
                                     "reminderOne" : item.reminderOne,
                                     "reminderTwo" : item.reminderTwo,
                                     "reminderThree":item.reminderThree,
@@ -53,7 +52,7 @@ class MedicationItemList{
             dateString = String(dateMonth) + " " + String(dateDay) + " " + String(dateYear) + " " + String(reminderOneHour) + ":" + String(reminderOneMinute) + " " + morningOrNight
             let reminderOneDate = formatter.dateFromString(dateString)!
 //            print("Reminder One")
-            print("Reminder One Date \(reminderOneDate)")
+//            print("Reminder One Date \(reminderOneDate)")
 //            reminderDateArray.append(reminderOneDate)
             makeNotification(reminderOneDate, item: item, message: "Reminder to take medication \(item.medicationName)", category: "REMINDER_CATEGORY")
         }
@@ -63,7 +62,7 @@ class MedicationItemList{
             dateString = String(dateMonth) + " " + String(dateDay) + " " + String(dateYear) + " " + String(reminderTwoHour) + ":" + String(reminderTwoMinute) + " " + morningOrNight
             let reminderTwoDate = formatter.dateFromString(dateString)!
 //            print("Reminder Two ")
-            print("REminder Two Date: \(reminderTwoDate)")
+//            print("REminder Two Date: \(reminderTwoDate)")
 //            reminderDateArray.append(reminderTwoDate)
             makeNotification(reminderTwoDate, item: item, message: "Reminder to take medication \(item.medicationName)", category: "REMINDER_CATEGORY")
         }
@@ -73,7 +72,7 @@ class MedicationItemList{
             dateString = String(dateMonth) + " " + String(dateDay) + " " + String(dateYear) + " " + String(reminderThreeHour) + ":" + String(reminderThreeMinute) + " " + morningOrNight
             let reminderThreeDate = formatter.dateFromString(dateString)!
 //            print("Reminder Three ")
-            print("Reminder Three Date: \(reminderThreeDate)")
+//            print("Reminder Three Date: \(reminderThreeDate)")
 //            reminderDateArray.append(reminderThreeDate)
             makeNotification(reminderThreeDate, item: item, message: "Reminder to take medication \(item.medicationName)", category: "REMINDER_CATEGORY")
         }
@@ -113,22 +112,31 @@ class MedicationItemList{
         notification.alertAction = "open"
         notification.fireDate = day
         notification.soundName = UILocalNotificationDefaultSoundName
-        notification.userInfo = ["NotificationUUID": item.medicationName]
+        notification.userInfo = ["NotificationUUID": item.uuid]
         notification.category = category
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        print("Added Notification \(notification.alertBody)")
     }
     
     // Function to remove items from the dictionary
     func removeItem(item: MedicationItem){
 
         for notification in UIApplication.sharedApplication().scheduledLocalNotifications!{
-            if notification.userInfo!["NotificationUUID"] as! String == item.medicationName{
+            if notification.userInfo!["NotificationUUID"] as! String == item.uuid
+            && notification.category == "MEDICATION_CATEGORY"{
+                print("Medication deleted : \(notification.alertBody)")
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                continue
+            }
+            if notification.userInfo!["NotificationUUID"] as! String == item.uuid
+            && notification.category == "REMINDER_CATEGORY"{
+                print("Reminder deleted : \(notification.alertBody)")
                 UIApplication.sharedApplication().cancelLocalNotification(notification)
                 break
             }
         }
         if var meds = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY){
-            meds.removeValueForKey(item.medicationName)
+            meds.removeValueForKey(item.uuid)
             // Save item
             NSUserDefaults.standardUserDefaults().setObject(meds, forKey: MED_KEY)
         }
@@ -138,7 +146,7 @@ class MedicationItemList{
     func allMeds() -> [MedicationItem] {
         let medDict = NSUserDefaults.standardUserDefaults().dictionaryForKey(MED_KEY) ?? [:]
         let medItems = Array(medDict.values)
-//        print("Medication Items \(medItems)")
+        print("Medication Items \(medItems)")
         
         return medItems.map({MedicationItem(
             name: $0["name"] as! String,

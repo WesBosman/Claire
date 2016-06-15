@@ -14,11 +14,14 @@ class MedicationCell: UITableViewCell {
     @IBOutlet weak var medicationTimes: UILabel!
     @IBOutlet weak var medicationReminder: UILabel!
     @IBOutlet weak var medicationDays: UILabel!
-//    @IBOutlet weak var medicationDiet: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        medicationDays.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        medicationDays.numberOfLines = 0
+        medicationReminder.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        medicationDays.numberOfLines = 0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

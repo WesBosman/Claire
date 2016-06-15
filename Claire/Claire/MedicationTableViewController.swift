@@ -39,7 +39,7 @@ class MedicationTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Black
         nav?.barTintColor = UIColor.purpleColor()
@@ -56,7 +56,7 @@ class MedicationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view data source    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -80,22 +80,20 @@ class MedicationTableViewController: UITableViewController {
         cell.medicationTimes.text = medicationItem.medicationTimes
         editTime = medicationItem.medicationTimes
         
-        // If medication time and diet are not empty print that they are on
+        
         if !(medicationItem.reminderOne.isEmpty){
             cell.medicationReminder.text = "reminder: on"
             reminderString = String(medicationItem.reminderOne[0]) + ":" + String(medicationItem.reminderOne[1])
         }
-        if !(medicationItem.reminderTwo.isEmpty){
+        else if !(medicationItem.reminderTwo.isEmpty){
             cell.medicationReminder.text = "reminder: on"
             reminderString = String(medicationItem.reminderTwo[0]) + ":" + String(medicationItem.reminderTwo[1])
         }
-        if !(medicationItem.reminderThree.isEmpty){
+        else if !(medicationItem.reminderThree.isEmpty){
             cell.medicationReminder.text = "reminder: on"
             reminderString = String(medicationItem.reminderThree[0]) + ":" + String(medicationItem.reminderThree[1])
         }
-        else{
-            cell.medicationReminder.text = "reminder: off"
-        }
+        else{ cell.medicationReminder.text = "reminder: off" }
 
         return cell
     }
@@ -135,21 +133,10 @@ class MedicationTableViewController: UITableViewController {
                 destination.editingMedication = selectedMedication
                 destination.editName = selectedCell.medicationName.text!
                 destination.editingDays = selectedCell.medicationDays.text!
-
                 destination.editTimes = selectedCell.medicationTimes.text!
+                
                 if selectedCell.medicationReminder.text == "reminder: on"{
-                    //reminder one
-                    if !(selectedMedication.reminderOne.isEmpty){
-                        destination.editRemember = String(selectedMedication.reminderOne[0]) + ":" + String(selectedMedication.reminderOne[1])
-                    }
-                    // reminder two
-                    if !(selectedMedication.reminderTwo.isEmpty){
-                        destination.editRemember += " " + String(selectedMedication.reminderTwo[0]) + ":" + String(selectedMedication.reminderTwo[1])
-                    }
-                    // reminder three
-                    if !(selectedMedication.reminderThree.isEmpty){
-                        destination.editRemember += " " + String(selectedMedication.reminderThree[0]) + ":" + String(selectedMedication.reminderThree[1])
-                    }
+                    destination.editRemember = reminderString
                 }
                 else{
                     destination.editRemember = ""

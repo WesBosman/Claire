@@ -47,6 +47,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         medicationNameTextBox.delegate = self
+        
         // if edit name is empty then set a placeholder
         if editName.isEmpty{
             medicationNameTextBox.placeholder = "Name of Medication"
@@ -55,7 +56,6 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         else{
             medicationNameTextBox.text = editName
         }
-        
         numberOfTimesRightDetail.text = editTimes
         reminderRightDetail.text = editRemember
         repeatRightDetail.text = editingDays
@@ -76,15 +76,25 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     }
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        
+        // Do not want to make two of the same medications with different unique identifiers.
         if editingPreviousEntry == true{
             print("Editing Previous Entry")
-            // Do something here to make sure the contents get edited like they should.
-
+            if let editing = editingMedication{
+                var medication = MedicationItem(name: medicationNameTextBox.text!,
+                                                time: numberOfTimesRightDetail.text!,
+                                                days: repeatRightDetail.text!,
+                                                reminderOne: reminderOne,
+                                                reminderTwo: reminderTwo,
+                                                reminderThree: reminderThree,
+                                                UUID: editing.uuid )
+                medication.setTimesDictionary(timesDictionary)
+                medication.setDaysSet(medicationDaysList)
+                MedicationItemList.sharedInstance.addItem(medication)
+            }
         }
         
         // If the name and the times and repeat are not null then continue.
-        if (!medicationNameTextBox.text!.isEmpty && !numberOfTimesRightDetail.text!.isEmpty
+        else if (!medicationNameTextBox.text!.isEmpty && !numberOfTimesRightDetail.text!.isEmpty
             && !repeatRightDetail.text!.isEmpty
             //&& !reminderRightDetail.text!.isEmpty
             ){
@@ -125,11 +135,10 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 
@@ -139,6 +148,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         // Pass the selected object to the new view controller.
         if segue.identifier == "saveSegue"{
             saveButtonPressed(self)
+            
         }
         else if segue.identifier == "addReminderSegue"{
             print("Add Reminder Segue Taken")

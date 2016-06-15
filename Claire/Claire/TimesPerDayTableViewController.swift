@@ -137,9 +137,6 @@ class TimesPerDayTableViewController: UITableViewController {
             toggleCheckmark(tableView, indexPath: indexPath)
             if indexPath.row == 0{
                 toggleTimeOneTitle()
-                timeFormat.dateFormat = "hh:mm a"
-                let example = timeFormat.dateFromString("7:00 AM")
-                print("Example: \(example)")
                 timeOneDetailLabel.text = "7:00 AM"
             }
             else if indexPath.row == 1{

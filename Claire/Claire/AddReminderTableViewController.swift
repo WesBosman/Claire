@@ -157,6 +157,7 @@ class AddReminderTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
 
         if segue.identifier == "UnwindAddReminder" {
+            print("Unwind from add reminder to table view controller")
             let destination = segue.destinationViewController as! TableViewController
             destination.reminderRightDetail.text = setTimeDetailLabel.text!
             destination.reminderHour = reminderHour
@@ -164,7 +165,7 @@ class AddReminderTableViewController: UITableViewController {
             destination.reminderOne = timeOneArray
             destination.reminderTwo = timeTwoArray
             destination.reminderThree = timeThreeArray
-            destination.viewWillAppear(true)
+//            destination.viewWillAppear(true)
         }
     }
 
