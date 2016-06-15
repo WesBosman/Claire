@@ -14,7 +14,7 @@ class MedicationCell: UITableViewCell {
     @IBOutlet weak var medicationTimes: UILabel!
     @IBOutlet weak var medicationReminder: UILabel!
     @IBOutlet weak var medicationDays: UILabel!
-    @IBOutlet weak var medicationDiet: UILabel!
+//    @IBOutlet weak var medicationDiet: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

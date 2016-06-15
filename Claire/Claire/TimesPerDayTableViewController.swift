@@ -24,6 +24,7 @@ class TimesPerDayTableViewController: UITableViewController {
     @IBOutlet weak var timeTwoDetailLabel: UILabel!
     @IBOutlet weak var timeThreeDetailLabel: UILabel!
     var timeDictionary: Dictionary<String, String> = [:]
+    var hourMinuteDictionary: Dictionary<String, [Int]> = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,30 +52,22 @@ class TimesPerDayTableViewController: UITableViewController {
         timeTwoDatePicker.date = defaultStartTime!
         timeThreeDatePicker.date = defaultStartTime!
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func toggleTimeOneTitle(){
         timeOneTitleIsHidden = !timeOneTitleIsHidden
-        //timeOneDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleTimeTwoTitle(){
         timeTwoTitleIsHidden = !timeTwoTitleIsHidden
-        //timeTwoDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func toggleTimeThreeTitle(){
         timeThreeTitleIsHidden = !timeThreeTitleIsHidden
-        //timeThreeDetailLabel.text = "7:00 AM"
         tableView.beginUpdates()
         tableView.endUpdates()
     }
@@ -137,11 +130,16 @@ class TimesPerDayTableViewController: UITableViewController {
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
+    // Had a problem where the user has to rotate the picker because a date can not be formed from 
+    // Just the string 7:00 AM
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2){
             toggleCheckmark(tableView, indexPath: indexPath)
             if indexPath.row == 0{
                 toggleTimeOneTitle()
+                timeFormat.dateFormat = "hh:mm a"
+                let example = timeFormat.dateFromString("7:00 AM")
+                print("Example: \(example)")
                 timeOneDetailLabel.text = "7:00 AM"
             }
             else if indexPath.row == 1{
@@ -179,94 +177,38 @@ class TimesPerDayTableViewController: UITableViewController {
         }
     }
     
+    func timeComponents(date: NSDate) -> NSDateComponents{
+        let calendar = NSCalendar.currentCalendar()
+        let dateComponents = calendar.components([.Hour, .Minute], fromDate: date)
+        return dateComponents
+    }
+    
     func timeOneDatePickerChanged(){
+        let timeOneComponents = timeComponents(timeOneDatePicker.date)
+        hourMinuteDictionary["Time One"] = [timeOneComponents.hour, timeOneComponents.minute]
         let str = timeFormat.stringFromDate(timeOneDatePicker.date)
         timeOneDetailLabel.text = str
     }
     
     func timeTwoDatePickerChanged(){
+        let timeTwoComponents = timeComponents(timeTwoDatePicker.date)
+        hourMinuteDictionary["Time Two"] = [timeTwoComponents.hour, timeTwoComponents.minute]
         let str = timeFormat.stringFromDate(timeTwoDatePicker.date)
         timeTwoDetailLabel.text = str
     }
     
     func timeThreeDatePickerChanged(){
+        let timeThreeComponents = timeComponents(timeThreeDatePicker.date)
+        hourMinuteDictionary["Time Three"] = [timeThreeComponents.hour, timeThreeComponents.minute]
         let str = timeFormat.stringFromDate(timeThreeDatePicker.date)
         timeThreeDetailLabel.text = str
     }
     
-    // Want to save the times and make them into notifications.
-    @IBAction func saveButtonIsPressed(sender: AnyObject) {
-        
-    }
-    
-    // MARK: - Table view data source
-    /**
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    **/
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-//        print("Segue ID: \(segue.identifier)")
-//        print("Time one : \(timeOneDetailLabel.text)")
-//        print("Time two : \(timeTwoDetailLabel.text)")
-//        print("Time three: \(timeThreeDetailLabel.text)")
         
         if segue.identifier! == "UnwindTimesPerDay"{
             let destination = segue.destinationViewController as! TableViewController
@@ -283,10 +225,10 @@ class TimesPerDayTableViewController: UITableViewController {
                 times += timeThreeDetailLabel.text!
                 timeDictionary["timeThree"] = timeThreeDetailLabel.text!
             }
-//            print("TimesPerDay Segue: \(times)")
-//            print("Time Dictionary: \(timeDictionary.keys) \(timeDictionary.values)")
+            
             destination.numberOfTimesRightDetail.text = times
             destination.timesDictionary = timeDictionary
+            destination.hourMinuteDictionary = hourMinuteDictionary
         }
     }
 }

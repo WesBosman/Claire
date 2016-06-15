@@ -22,28 +22,27 @@ extension UITableViewController {
 }
 
 class TableViewController: UITableViewController, UITextFieldDelegate{
-    @IBOutlet weak var dietSwitch: UISwitch!
+
     @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
     @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
     @IBOutlet weak var medicationNameTextBox: UITextField!
     @IBOutlet weak var numberOfTimesRightDetail: UILabel!
     @IBOutlet weak var repeatRightDetail: UILabel!
     @IBOutlet weak var reminderRightDetail: UILabel!
-    @IBOutlet weak var timeAfterEatingDetail: UILabel!
-    @IBOutlet weak var timeAfterEatingPicker: UIDatePicker!
-    var timeAfterEatingFormat = NSDateFormatter()
-    var timeAfterEatingTitleHidden = false
-    var timeAfterEatingPickerHidden = false
-    var medicationDaysSet: Set<String> = []
+    var medicationDaysList:[String] = []
     var timesDictionary: Dictionary<String, String> = [:]
+    var hourMinuteDictionary: Dictionary<String, [Int]> = [:]
     var editName:String = ""
     var editingDays:String = ""
     var editRemember: String = ""
     var editTimes:String = ""
-    var editDiet:String = ""
-    var editDietSwitchOn:Bool = false
     var editingPreviousEntry = false
     var editingMedication:MedicationItem? = nil
+    var reminderHour:Int = 0
+    var reminderMinute: Int = 0
+    var reminderOne:[Int] = []
+    var reminderTwo: [Int] = []
+    var reminderThree:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,24 +59,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         numberOfTimesRightDetail.text = editTimes
         reminderRightDetail.text = editRemember
         repeatRightDetail.text = editingDays
-        timeAfterEatingDetail.text = editDiet
-        
-        dietSwitch.tintColor = UIColor.purpleColor()
-        dietSwitch.onTintColor = UIColor.purpleColor()
-        dietSwitch.setOn(editDietSwitchOn, animated: true)
-        timeAfterEatingFormat.dateFormat = "HH:mm"
-        timeAfterEatingPicker.datePickerMode = UIDatePickerMode.CountDownTimer
-        toggleTimeAfterEating()
-        toggleTimeAfterEatingPicker()
-        
-        if editDietSwitchOn == true{
-            toggleTimeAfterEating()
-            toggleTimeAfterEatingPicker()
-        }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     }
     
     // Function for hiding the keyboard when the return key is pressed.
@@ -97,26 +79,24 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         
         if editingPreviousEntry == true{
             print("Editing Previous Entry")
-//            let oldMedList = MedicationItemList.sharedInstance.allMeds()
-//            let newMedList = MedicationItemList.sharedInstance.removeItem(editingMedication!)
-//            //print(oldMedList)
-//            print(newMedList)
+            // Do something here to make sure the contents get edited like they should.
+
         }
         
         // If the name and the times and repeat are not null then continue.
         if (!medicationNameTextBox.text!.isEmpty && !numberOfTimesRightDetail.text!.isEmpty
-            //&& !timeAfterEatingDetail.text!.isEmpty 
             && !repeatRightDetail.text!.isEmpty
             //&& !reminderRightDetail.text!.isEmpty
             ){
             var medication = MedicationItem(name: medicationNameTextBox.text!,
                                             time: numberOfTimesRightDetail.text!,
-                                            diet: timeAfterEatingDetail.text ?? "",
                                             days: repeatRightDetail.text!,
-                                            reminder: reminderRightDetail.text ?? "",
+                                            reminderOne: reminderOne,
+                                            reminderTwo: reminderTwo,
+                                            reminderThree: reminderThree,
                                             UUID: NSUUID().UUIDString)
             medication.setTimesDictionary(timesDictionary)
-            medication.setDaysSet(medicationDaysSet)
+            medication.setDaysSet(medicationDaysList)
             MedicationItemList.sharedInstance.addItem(medication)
             
         }
@@ -140,57 +120,16 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     }
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
-        //print("Unwind action was called")
         tableView.reloadData()
-    }
-    
-    @IBAction func waitAfterEatingChanged(sender: AnyObject) {
-        let str = timeAfterEatingFormat.stringFromDate(timeAfterEatingPicker.date)
-        timeAfterEatingDetail.text = str
-    }
-
-    @IBAction func dietAction(sender: AnyObject) {
-        toggleTimeAfterEating()
-        toggleTimeAfterEatingPicker()
-    }
-    
-    func toggleTimeAfterEating(){
-        timeAfterEatingTitleHidden = !timeAfterEatingTitleHidden
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-    
-    func toggleTimeAfterEatingPicker(){
-        timeAfterEatingPickerHidden = !timeAfterEatingPickerHidden
-        tableView.beginUpdates()
-        tableView.endUpdates()
     }
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Toggle the date picker for diet switch
-        if indexPath.section == 2 && indexPath.row == 1{
-            toggleTimeAfterEatingPicker()
-        }
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Hide the time after eating title
-        if dietSwitch.on == false && timeAfterEatingTitleHidden
-            && indexPath.section == 2 && indexPath.row == 1{
-            return 0
-        }
-        // Hide the time after eating picker
-        else if dietSwitch.on == false && timeAfterEatingPickerHidden
-            && indexPath.section == 2 && indexPath.row == 2{
-            return 0
-        }
-        // Hide the time after eating picker not based on the switch
-        else if timeAfterEatingPickerHidden && indexPath.section == 2 && indexPath.row == 2{
-            return 0
-        }
-        
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 
@@ -200,6 +139,13 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         // Pass the selected object to the new view controller.
         if segue.identifier == "saveSegue"{
             saveButtonPressed(self)
+        }
+        else if segue.identifier == "addReminderSegue"{
+            print("Add Reminder Segue Taken")
+            let destination = segue.destinationViewController as! AddReminderTableViewController
+            if !timesDictionary.isEmpty{
+                destination.hourMinuteDictionary = hourMinuteDictionary
+            }
         }
     }
 }

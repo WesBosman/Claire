@@ -32,7 +32,7 @@ class RepeatDaysTableViewController: UITableViewController {
             if listOfDays.contains(day!){
                 let index = listOfDays.indexOf(day!)
                 listOfDays.removeAtIndex(index!)
-                print("Remove \(day!) at index \(index!)")
+                print("Remove \(day!)")
             }
         }
         // Otherwise turn the checkmark on and add the day to the set
@@ -46,7 +46,7 @@ class RepeatDaysTableViewController: UITableViewController {
     }
     
     // Got these next two methods from Sandeep on stackoverflow
-    func formattedDaysInThisWeek() -> [String] {
+    func formattedDaysInThisYear() -> [String] {
         // create calendar
         let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
         
@@ -83,7 +83,7 @@ class RepeatDaysTableViewController: UITableViewController {
                 // If the date starts with the day from our set then add it to formatted days
                 if (formatDate(date).hasPrefix(dayz)){
                     formattedDays.append(formatDate(date))
-                    print(formatDate(date))
+//                    print(formatDate(date))
                 }
             }
         }
@@ -106,7 +106,7 @@ class RepeatDaysTableViewController: UITableViewController {
 
         if segue.identifier! == "UnwindAddDays"{
             let destination = segue.destinationViewController as! TableViewController
-            let daysOfWeek = formattedDaysInThisWeek()
+            let daysOfWeek = formattedDaysInThisYear()
             for day in daysOfWeek{
                 for newDay in listOfDays.reverse(){
                     if day.hasPrefix(newDay){
@@ -118,7 +118,7 @@ class RepeatDaysTableViewController: UITableViewController {
             }
             
             destination.repeatRightDetail.text = listOfDaysAsString
-            destination.medicationDaysSet = listOfDays
+            destination.medicationDaysList = daysOfWeek
         }
     }
 }

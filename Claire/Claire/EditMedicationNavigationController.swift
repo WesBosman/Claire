@@ -13,8 +13,6 @@ class EditMedicationNavigationController: UINavigationController {
     var editingTime:String = ""
     var editingDays:String = ""
     var editingReminder:String = ""
-    var editingDiet:String = ""
-    var dietSwitchIsOn: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +38,6 @@ class EditMedicationNavigationController: UINavigationController {
             destination.numberOfTimesRightDetail.text = editingTime
             destination.reminderRightDetail.text = editingReminder
             destination.repeatRightDetail.text = editingDays
-            destination.dietSwitch.on = dietSwitchIsOn
-            
         }
     }
 

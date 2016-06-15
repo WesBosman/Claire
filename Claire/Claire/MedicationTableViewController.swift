@@ -16,9 +16,7 @@ import UIKit
 class MedicationTableViewController: UITableViewController {
     var medItemList: [MedicationItem] = []
     var notificationTimeSet = Set<NSDate>()
-    var dietSwitchOn = false
     var reminderString: String = ""
-    var dietString: String = ""
     var editName: String = ""
     var editTime: String = ""
     var editReminder: String = ""
@@ -60,12 +58,10 @@ class MedicationTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return medItemList.count
     }
     
@@ -85,21 +81,20 @@ class MedicationTableViewController: UITableViewController {
         editTime = medicationItem.medicationTimes
         
         // If medication time and diet are not empty print that they are on
-        if !(medicationItem.reminderTime!.isEmpty){
+        if !(medicationItem.reminderOne.isEmpty){
             cell.medicationReminder.text = "reminder: on"
-            reminderString = medicationItem.reminderTime!
+            reminderString = String(medicationItem.reminderOne[0]) + ":" + String(medicationItem.reminderOne[1])
+        }
+        if !(medicationItem.reminderTwo.isEmpty){
+            cell.medicationReminder.text = "reminder: on"
+            reminderString = String(medicationItem.reminderTwo[0]) + ":" + String(medicationItem.reminderTwo[1])
+        }
+        if !(medicationItem.reminderThree.isEmpty){
+            cell.medicationReminder.text = "reminder: on"
+            reminderString = String(medicationItem.reminderThree[0]) + ":" + String(medicationItem.reminderThree[1])
         }
         else{
             cell.medicationReminder.text = "reminder: off"
-        }
-        
-        if !(medicationItem.medicationDietTime!.isEmpty){
-            cell.medicationDiet.text = "diet: on"
-            dietSwitchOn = true
-            dietString = medicationItem.medicationDietTime!
-        }
-        else{
-            cell.medicationDiet.text = "diet: off"
         }
 
         return cell
@@ -120,10 +115,6 @@ class MedicationTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             MedicationItemList.sharedInstance.removeItem(itemToDelete)
         }
-        
-        //else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        //}
     }
 
     // MARK: - Navigation
@@ -144,18 +135,26 @@ class MedicationTableViewController: UITableViewController {
                 destination.editingMedication = selectedMedication
                 destination.editName = selectedCell.medicationName.text!
                 destination.editingDays = selectedCell.medicationDays.text!
-                //destination.editRemember = selectedCell.medicationReminder.text!
+
                 destination.editTimes = selectedCell.medicationTimes.text!
                 if selectedCell.medicationReminder.text == "reminder: on"{
-                    destination.editRemember = selectedMedication.reminderTime!
+                    //reminder one
+                    if !(selectedMedication.reminderOne.isEmpty){
+                        destination.editRemember = String(selectedMedication.reminderOne[0]) + ":" + String(selectedMedication.reminderOne[1])
+                    }
+                    // reminder two
+                    if !(selectedMedication.reminderTwo.isEmpty){
+                        destination.editRemember += " " + String(selectedMedication.reminderTwo[0]) + ":" + String(selectedMedication.reminderTwo[1])
+                    }
+                    // reminder three
+                    if !(selectedMedication.reminderThree.isEmpty){
+                        destination.editRemember += " " + String(selectedMedication.reminderThree[0]) + ":" + String(selectedMedication.reminderThree[1])
+                    }
                 }
                 else{
                     destination.editRemember = ""
                 }
-                if selectedCell.medicationDiet.text == "diet: on"{
-                    destination.editDiet = selectedMedication.medicationDietTime!
-                    destination.editDietSwitchOn = true
-                }
+
                 destination.editingPreviousEntry = true
             }
 
