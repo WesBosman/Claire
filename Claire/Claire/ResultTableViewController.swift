@@ -31,6 +31,11 @@ class ResultTableViewController: UITableViewController {
         nav?.barTintColor = UIColor.purpleColor()
         nav?.tintColor = UIColor.whiteColor()
     }
+    
+    // Get the date components for 1 year from now. For sections in table view
+    func calculateCurrentWeek(fromDate: NSDate){
+        
+    }
 
     // MARK: - Table view data source
     /*

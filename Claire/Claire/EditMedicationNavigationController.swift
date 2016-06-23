@@ -33,11 +33,16 @@ class EditMedicationNavigationController: UINavigationController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "editingMedicationSegue"{
-            let destination = segue.destinationViewController as! TableViewController
+            let destination = segue.destinationViewController as! MedicationStaticTableViewController
             destination.medicationNameTextBox.text = editingName
             destination.numberOfTimesRightDetail.text = editingTime
             destination.reminderRightDetail.text = editingReminder
             destination.repeatRightDetail.text = editingDays
+            print("Editing medication segue from navigation controller")
+//            print("editing name: \(editingName)")
+//            print("Editing Time: \(editingTime)")
+//            print("Editing Reminder: \(editingReminder)")
+//            print("Repeat Right Detail: \(editingDays)")
         }
     }
 

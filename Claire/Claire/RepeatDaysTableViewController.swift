@@ -105,7 +105,7 @@ class RepeatDaysTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
 
         if segue.identifier! == "UnwindAddDays"{
-            let destination = segue.destinationViewController as! TableViewController
+            let destination = segue.destinationViewController as! MedicationStaticTableViewController
             let daysOfWeek = formattedDaysInThisYear()
             for day in daysOfWeek{
                 for newDay in listOfDays.reverse(){

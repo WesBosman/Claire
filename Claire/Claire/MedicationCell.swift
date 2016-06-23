@@ -14,6 +14,8 @@ class MedicationCell: UITableViewCell {
     @IBOutlet weak var medicationTimes: UILabel!
     @IBOutlet weak var medicationReminder: UILabel!
     @IBOutlet weak var medicationDays: UILabel!
+    @IBOutlet weak var skippedButton: UIButton!
+    @IBOutlet weak var takenButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +25,16 @@ class MedicationCell: UITableViewCell {
         medicationReminder.lineBreakMode = NSLineBreakMode.ByWordWrapping
         medicationDays.numberOfLines = 0
     }
+    
+    @IBAction func skippedButtonPressed(sender: AnyObject) {
+    }
+    
+    @IBAction func takenButtonPressed(sender: AnyObject) {
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-
 }

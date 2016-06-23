@@ -19,12 +19,13 @@
 		DE2B1D8B1D09FE7F0069761D /* EditMedicationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */; };
 		DE2B1D8D1D0E5D380069761D /* AddMedicationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */; };
 		DE2B1D8F1D0E5D740069761D /* FirstUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */; };
+		DE62D0101D1C475F003ED54E /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62D00F1D1C475F003ED54E /* ResultCell.swift */; };
 		DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B93F1D00CD0700401332 /* AppDelegate.swift */; };
 		DE96B9471D00CD0700401332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9461D00CD0700401332 /* Assets.xcassets */; };
 		DE96B94A1D00CD0700401332 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */; };
 		DE96B9551D00CD0700401332 /* ClaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B9541D00CD0700401332 /* ClaireTests.swift */; };
 		DE96B9601D00CD0700401332 /* ClaireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B95F1D00CD0700401332 /* ClaireUITests.swift */; };
-		DE96B96E1D00D4B000401332 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B96D1D00D4B000401332 /* TableViewController.swift */; };
+		DE96B96E1D00D4B000401332 /* MedicationStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMedicationNavigationController.swift; sourceTree = "<group>"; };
 		DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMedicationTest.swift; sourceTree = "<group>"; };
 		DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUITest.swift; sourceTree = "<group>"; };
+		DE62D00F1D1C475F003ED54E /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		DE96B93C1D00CD0700401332 /* Claire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Claire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE96B93F1D00CD0700401332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE96B9461D00CD0700401332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		DE96B95B1D00CD0700401332 /* ClaireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE96B95F1D00CD0700401332 /* ClaireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaireUITests.swift; sourceTree = "<group>"; };
 		DE96B9611D00CD0700401332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE96B96D1D00D4B000401332 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationStaticTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +122,14 @@
 			isa = PBXGroup;
 			children = (
 				DE96B93F1D00CD0700401332 /* AppDelegate.swift */,
+				DE62D00F1D1C475F003ED54E /* ResultCell.swift */,
+				DE2B1D7D1D07748C0069761D /* MedicationCell.swift */,
 				DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */,
 				DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */,
-				DE2B1D7D1D07748C0069761D /* MedicationCell.swift */,
 				DE2B1D7F1D0798E30069761D /* MedicationItem.swift */,
 				DE2B1D811D079A810069761D /* MedicationItemList.swift */,
 				DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */,
-				DE96B96D1D00D4B000401332 /* TableViewController.swift */,
+				DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */,
 				DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */,
 				DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */,
 				DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */,
@@ -292,10 +295,11 @@
 			files = (
 				DE2736281D069A12000583A7 /* AddReminderTableViewController.swift in Sources */,
 				DE2B1D7E1D07748C0069761D /* MedicationCell.swift in Sources */,
+				DE62D0101D1C475F003ED54E /* ResultCell.swift in Sources */,
 				DE2B1D861D085D2C0069761D /* ResultTableViewController.swift in Sources */,
 				DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */,
 				DE2B1D801D0798E30069761D /* MedicationItem.swift in Sources */,
-				DE96B96E1D00D4B000401332 /* TableViewController.swift in Sources */,
+				DE96B96E1D00D4B000401332 /* MedicationStaticTableViewController.swift in Sources */,
 				DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */,
 				DE2B1D7C1D0772AA0069761D /* MedicationTableViewController.swift in Sources */,
 				DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */,
@@ -447,6 +451,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Claire/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.Claire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,6 +466,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Claire/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.Claire;
 				PRODUCT_NAME = "$(TARGET_NAME)";

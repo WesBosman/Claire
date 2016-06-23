@@ -10,18 +10,13 @@ import UIKit
 
 //  Found this extension on stack overflow from Esqarrouth
 extension UITableViewController {
-    // This interferes with selecting rows of the table view. Otherwise cool.
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UITableViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
     // This works fine
     func dismissKeyboard() {
         view.endEditing(true)
     }
 }
 
-class TableViewController: UITableViewController, UITextFieldDelegate{
+class MedicationStaticTableViewController: UITableViewController, UITextFieldDelegate{
 
     @IBOutlet weak var timeToTakeMedicineDatePicker: UIDatePicker!
     @IBOutlet weak var timeToTakeMedsRightDetail: UILabel!
@@ -46,6 +41,8 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Handle text field events.
         medicationNameTextBox.delegate = self
         
         // if edit name is empty then set a placeholder
@@ -59,15 +56,16 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         numberOfTimesRightDetail.text = editTimes
         reminderRightDetail.text = editRemember
         repeatRightDetail.text = editingDays
-
     }
     
     // Function for hiding the keyboard when the return key is pressed.
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.dismissKeyboard()
+        print("Text Field Should Return Method was entered")
+        self.medicationNameTextBox.resignFirstResponder()
         return true
     }
     
+    // Set the color and style of the navigation bar.
     override func viewDidAppear(animated: Bool) {
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Black
@@ -75,6 +73,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         nav?.tintColor = UIColor.whiteColor()
     }
     
+    // Save the medication item.
     @IBAction func saveButtonPressed(sender: AnyObject) {
         // Do not want to make two of the same medications with different unique identifiers.
         if editingPreviousEntry == true{
@@ -94,9 +93,9 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         }
         
         // If the name and the times and repeat are not null then continue.
-        else if (!medicationNameTextBox.text!.isEmpty && !numberOfTimesRightDetail.text!.isEmpty
-            && !repeatRightDetail.text!.isEmpty
-            //&& !reminderRightDetail.text!.isEmpty
+        else if (!medicationNameTextBox.text!.isEmpty
+              && !numberOfTimesRightDetail.text!.isEmpty
+              && !repeatRightDetail.text!.isEmpty
             ){
             var medication = MedicationItem(name: medicationNameTextBox.text!,
                                             time: numberOfTimesRightDetail.text!,
@@ -133,7 +132,6 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         tableView.reloadData()
     }
     
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -147,6 +145,7 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "saveSegue"{
+            print("Save Segue")
             saveButtonPressed(self)
             
         }
@@ -155,6 +154,22 @@ class TableViewController: UITableViewController, UITextFieldDelegate{
             let destination = segue.destinationViewController as! AddReminderTableViewController
             if !timesDictionary.isEmpty{
                 destination.hourMinuteDictionary = hourMinuteDictionary
+                destination.timesDictionary = timesDictionary
+                
+                print("Times Dictionary keys: \(timesDictionary.keys)")
+                print("Times Dictionary values: \(timesDictionary.values)")
+                
+                print("HourMinuteDictionary: \(hourMinuteDictionary.keys) values: \(hourMinuteDictionary.values)")
+            }
+            else if editingPreviousEntry == true {
+//                let timesArray = editTimes.componentsSeparatedByString(" ")
+
+//                timesDictionary["timeOne"] = timesArray[0] + " " + timesArray[1]
+//                timesDictionary["timeTwo"] = (timesArray[2] + " " + timesArray[3]) ?? ""
+//                timesDictionary["timeThree"] = (timesArray[4] + " " + timesArray[5]) ?? ""
+                print("Times Dictionary keys: \(timesDictionary.keys)")
+                print("Times Dictionary values: \(timesDictionary.values)")
+                
             }
         }
     }

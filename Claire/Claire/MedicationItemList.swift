@@ -116,6 +116,8 @@ class MedicationItemList{
         notification.category = category
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
         print("Added Notification \(notification.alertBody)")
+        print("With Date: \(notification.fireDate)")
+        print("With UUID: \(notification.userInfo)")
     }
     
     // Function to remove items from the dictionary
@@ -124,13 +126,19 @@ class MedicationItemList{
         for notification in UIApplication.sharedApplication().scheduledLocalNotifications!{
             if notification.userInfo!["NotificationUUID"] as! String == item.uuid
             && notification.category == "MEDICATION_CATEGORY"{
-                print("Medication deleted : \(notification.alertBody)")
+                print("Medication deleted : \(notification.alertBody!)")
+                print("With Date: \(notification.fireDate)")
+                print("With UUID: \(notification.userInfo)")
+                
                 UIApplication.sharedApplication().cancelLocalNotification(notification)
                 continue
             }
             if notification.userInfo!["NotificationUUID"] as! String == item.uuid
             && notification.category == "REMINDER_CATEGORY"{
                 print("Reminder deleted : \(notification.alertBody)")
+                print("With Date: \(notification.fireDate)")
+                print("With UUID: \(notification.userInfo)")
+                
                 UIApplication.sharedApplication().cancelLocalNotification(notification)
                 break
             }

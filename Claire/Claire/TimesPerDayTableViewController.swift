@@ -17,12 +17,11 @@ class TimesPerDayTableViewController: UITableViewController {
     private var timePickerOneIsHidden = false
     private var timePickerTwoIsHidden = false
     private var timePickerThreeIsHidden = false
-    private var daysSelected = []
     @IBOutlet weak var timeThreeDatePicker: UIDatePicker!
-    let timeFormat: NSDateFormatter = NSDateFormatter()
     @IBOutlet weak var timeOneDetailLabel: UILabel!
     @IBOutlet weak var timeTwoDetailLabel: UILabel!
     @IBOutlet weak var timeThreeDetailLabel: UILabel!
+    let timeFormat: NSDateFormatter = NSDateFormatter()
     var timeDictionary: Dictionary<String, String> = [:]
     var hourMinuteDictionary: Dictionary<String, [Int]> = [:]
 
@@ -162,8 +161,9 @@ class TimesPerDayTableViewController: UITableViewController {
         }
     }
     
+    // Toggle the checkmarks on the time cells
     func toggleCheckmark(tableView: UITableView, indexPath: NSIndexPath){
-        // Get a cell and change the accessory type
+        // Get a cell and change the accessory type to a checkmark when clicked
         let selection = tableView.cellForRowAtIndexPath(indexPath)
         
         if selection?.accessoryType == UITableViewCellAccessoryType.None{
@@ -208,7 +208,7 @@ class TimesPerDayTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         
         if segue.identifier! == "UnwindTimesPerDay"{
-            let destination = segue.destinationViewController as! TableViewController
+            let destination = segue.destinationViewController as! MedicationStaticTableViewController
             var times:String = ""
             if (!timeOneDetailLabel.text!.isEmpty){
                 times += timeOneDetailLabel.text! + " "
