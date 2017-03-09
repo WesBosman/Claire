@@ -13,7 +13,6 @@
 		DE0A82A81E3825BA00A9D529 /* MedFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A82A71E3825BA00A9D529 /* MedFormViewController.swift */; };
 		DE2176621E6F084B0034A83A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2176611E6F084B0034A83A /* Default-568h@2x.png */; };
 		DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */; };
-		DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */; };
 		DE2736281D069A12000583A7 /* AddReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */; };
 		DE2B1D7C1D0772AA0069761D /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */; };
 		DE2B1D7E1D07748C0069761D /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7D1D07748C0069761D /* MedicationCell.swift */; };
@@ -68,7 +67,6 @@
 		DE0A82A71E3825BA00A9D529 /* MedFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedFormViewController.swift; path = ../MedFormViewController.swift; sourceTree = "<group>"; };
 		DE2176611E6F084B0034A83A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesPerDayTableViewController.swift; sourceTree = "<group>"; };
-		DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDaysTableViewController.swift; sourceTree = "<group>"; };
 		DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderTableViewController.swift; sourceTree = "<group>"; };
 		DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
 		DE2B1D7D1D07748C0069761D /* MedicationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				DE0A82A71E3825BA00A9D529 /* MedFormViewController.swift */,
-				DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */,
 				DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */,
 				DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */,
 				DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */,
@@ -530,7 +527,6 @@
 				DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */,
 				DE2B1D801D0798E30069761D /* Medication.swift in Sources */,
 				DE96B96E1D00D4B000401332 /* MedicationStaticTableViewController.swift in Sources */,
-				DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */,
 				DE2B1D7C1D0772AA0069761D /* MedicationTableViewController.swift in Sources */,
 				DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */,
 				DE2B1D821D079A810069761D /* MedicationList.swift in Sources */,
