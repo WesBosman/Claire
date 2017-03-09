@@ -10,50 +10,30 @@ import UIKit
 
 class AddReminderTableViewController: UITableViewController {
     @IBOutlet weak var reminderDatePicker: UIDatePicker!
-    @IBOutlet weak var reminderSwitch: UISwitch!
+    @IBOutlet weak var reminderSwitch:     UISwitch!
     @IBOutlet weak var setTimeDetailLabel: UILabel!
-    private let timeFormat = NSDateFormatter()
-    private var timePickerHidden = false
-    private var timePickerTitle = false
-    private var reminderHour: Int = 0
-    private var reminderMinute:Int = 0
-    var hourMinuteDictionary: Dictionary<String, [Int]> = [:]
-    var timesDictionary:Dictionary<String, String> = [:]
-    var timeOneArray: [Int] = []
-    var timeTwoArray:[Int] = []
-    var timeThreeArray:[Int] = []
+    fileprivate let timeFormat       = DateFormatter()
+    fileprivate let fullFormat       = DateFormatter()
+    fileprivate var timePickerHidden = false
+    fileprivate var timePickerTitle  = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTimeDetailLabel.text = "00:00"
-        timeFormat.dateFormat = "HH:mm"
-        reminderDatePicker.datePickerMode = UIDatePickerMode.CountDownTimer
-        reminderSwitch.onTintColor = UIColor.purpleColor()
-        reminderSwitch.tintColor = UIColor.purpleColor()
+        fullFormat.dateFormat = "MM/dd/yyyy h:mm:ss a"
+        setTimeDetailLabel.text = "0:00"
+        timeFormat.dateFormat   = "H:mm"
+        reminderDatePicker.datePickerMode = UIDatePickerMode.countDownTimer
+        reminderSwitch.onTintColor = UIColor.purple
+        reminderSwitch.tintColor   = UIColor.purple
         reminderSwitch.setOn(false, animated: true)
-        
-        print(timesDictionary.keys)
-        print(timesDictionary.values)
-//        calcuate(timesDictionary["timeOne"]!)
     }
-    
-    func calcuate(dateFromString: String){
-        print("String Passed in: \(dateFromString)")
-        let calendar = NSCalendar.currentCalendar()
-        let dateFormat = NSDateFormatter()
-        dateFormat.dateFormat = "h:mm a"
-        let newDate = dateFormat.dateFromString(dateFromString)
-        print("Date From String: \(newDate)")
-        let calendarComponents = calendar.component([.Hour, .Minute, .Day, .Month, .Year], fromDate: newDate!)
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func reminderSwitchPressed(sender: AnyObject) {
+    @IBAction func reminderSwitchPressed(_ sender: AnyObject) {
         togglePickerTitle()
     }
     
@@ -63,139 +43,72 @@ class AddReminderTableViewController: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-    
-    // I want to rewrite this method as well.
-    func calcTime(hour:Int, minute:Int, date: NSDate) -> [Int]{
-        let calendar = NSCalendar.currentCalendar()
-        let newDateComp = calendar.components([.Hour, .Minute], fromDate: date)
-        let newHour = newDateComp.hour
-        let newMinute = newDateComp.minute
-        print("New Hour: \(newHour)")
-        print("New Minute: \(newMinute)")
-        
-        var strHour = hour + newHour
-        var strMinute = minute + newMinute
-        if strMinute > 59{
-            strHour = strHour + 1
-            let newMinutes = strMinute - 60
-            strMinute = newMinutes
-            print("Minutes greater than 60")
-            print("New Hour: \(strHour)")
-            print("New Minute: \(strMinute)")
-            reminderHour = (strHour)
-            reminderMinute = (strMinute)
-        }
-        else{
-            print("Hour: \(strHour)")
-            print("Minute: \(strMinute)")
-            reminderHour = (strHour)
-            reminderMinute = (strMinute)
-        }
-        if strHour > 12 {
-            let newHour = strHour - 12
-            strHour = newHour
-            print("Hour greater than 12")
-            print("New Hour: \(strHour)")
-            print("New Minute: \(strMinute)")
-            reminderHour = (strHour)
-            reminderMinute = (strMinute)
-        }
-        else{
-            print("Hour: \(strHour)")
-            print("Minute: \(strMinute)")
-            reminderHour = (strHour)
-            reminderMinute = (strMinute)
-        }
-        return [reminderHour, reminderMinute]
-    }
-    
-    func getNextYearsDate(date:NSDate){
-        // Get new Date based on the passed in date
-        let calendar = NSCalendar.currentCalendar()
-        let newTimeComponents = NSDateComponents() //calendar.components([.Hour, .Minute], fromDate: date)
-        
-    }
 
-    // I want to rewrite this method
-    // to make it simpler
-    @IBAction func timePickerHasChanged(sender: AnyObject) {
-        
+    // This method should only have to update the label
+    @IBAction func timePickerHasChanged(_ sender: AnyObject) {
         // Update the right detail text when the picker moves.
-        
-        let str = timeFormat.stringFromDate(reminderDatePicker.date)
+        timeFormat.dateFormat = "H:mm"
+        let str = timeFormat.string(from: reminderDatePicker.date)
         setTimeDetailLabel.text = str
-        let date = timeFormat.dateFromString(str)!
-        print("Time Picker Date: \(date)")
-
-        // get arrays for the times
-//        if let arrayForTimeOne = hourMinuteDictionary["Time One"]{
-//            hour = arrayForTimeOne[0]
-//            minute = arrayForTimeOne[1]
-//            timeOneArray = calcTime(hour, minute: minute, date: date)
-//            print("Time One Hour: \(hour)")
-//            print("Time One Minute: \(minute)")
-//            print("Time One Array: \(timeOneArray)")
-//        }
-//        
-//        if let arrayForTimeTwo = hourMinuteDictionary["Time Two"]{
-//            hour = arrayForTimeTwo[0]
-//            minute = arrayForTimeTwo[1]
-//            timeTwoArray = calcTime(hour, minute: minute, date: date)
-//            print("Time Two Hour: \(hour)")
-//            print("Time Two Minute: \(minute)")
-//            print("Time Two Array: \(timeTwoArray)")
-//        }
-//        
-//        if let arrayForTimeThree = hourMinuteDictionary["Time Three"]{
-//            hour = arrayForTimeThree[0]
-//            minute = arrayForTimeThree[1]
-//            timeThreeArray = calcTime(hour, minute: minute, date: date)
-//            print("Time Three Hour: \(hour)")
-//            print("Time Three Minute: \(minute)")
-//            print("Time Three Array: \(timeThreeArray)")
-//        }
-
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if !timePickerTitle && reminderSwitch.on == false
-            && indexPath.section == 1 && indexPath.row == 0{
+        if !timePickerTitle && reminderSwitch.isOn == false
+            && indexPath.section == 1
+            && indexPath.row == 0{
             return 0
         }
-        else if !timePickerHidden && reminderSwitch.on == false
-            && indexPath.section == 1 && indexPath.row == 1{
+        else if !timePickerHidden && reminderSwitch.isOn == false
+            && indexPath.section == 1
+            && indexPath.row == 1{
             return 0
         }
         else{
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
+        print("Segue Identifier : \(segue.identifier)")
         if segue.identifier == "UnwindAddReminder" {
-            print("Unwind from add reminder to table view controller")
-            let destination = segue.destinationViewController as! MedicationStaticTableViewController
+            let destination = segue.destination as!MedicationStaticTableViewController
+            
+            // Create a calendar 
+            let calendar = Calendar.autoupdatingCurrent
+            
+            if let timeOne = Globals.timesDictionary[Globals.timeOneKey]{
+                // Create reminder for time one
+                let date = reminderDatePicker.date
+                let dateComp = calendar.dateComponents([.hour, .minute], from: date)
+                let newDate = calendar.date(byAdding: dateComp, to: timeOne)
+                print("Time One Alert -> \(fullFormat.string(from: newDate!))")
+                Globals.reminderDictionary[Globals.reminderOneKey] = newDate!
+            }
+            if let timeTwo = Globals.timesDictionary[Globals.timeTwoKey]{
+                // Create reminder for time two
+                let date = reminderDatePicker.date
+                let dateComp = calendar.dateComponents([.hour, .minute], from: date)
+                let newDate = calendar.date(byAdding: dateComp, to: timeTwo)
+                print("Time Two Alert -> \(fullFormat.string(from: newDate!))")
+                Globals.reminderDictionary[Globals.reminderTwoKey] = newDate!
+            }
+            if let timeThree = Globals.timesDictionary[Globals.timeThreeKey]{
+                let date = reminderDatePicker.date
+                let dateComp = calendar.dateComponents([.hour, .minute], from: date)
+                let newDate = calendar.date(byAdding: dateComp, to: timeThree)
+                print("Time Three Alert -> \(fullFormat.string(from: newDate!))")
+                Globals.reminderDictionary[Globals.reminderThreeKey] = newDate!
+            }
             destination.reminderRightDetail.text = setTimeDetailLabel.text!
-            destination.reminderHour = reminderHour
-            destination.reminderMinute = reminderMinute
-            destination.reminderOne = timeOneArray
-            destination.reminderTwo = timeTwoArray
-            destination.reminderThree = timeThreeArray
             print("Unwind add reminder")
-            print("Set Time Detail Label: \(setTimeDetailLabel.text!)")
-            print("Reminder Hour: \(reminderHour)")
-            print("Reminder Minute: \(reminderMinute)")
-            print("Reminder One: \(timeOneArray)")
-            print("Reminder Two: \(timeTwoArray)")
-            print("Reminder Three: \(timeThreeArray)")
         }
     }
 

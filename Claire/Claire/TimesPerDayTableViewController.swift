@@ -9,21 +9,22 @@
 import UIKit
 
 class TimesPerDayTableViewController: UITableViewController {
-    @IBOutlet weak var timeOneDatePicker: UIDatePicker!
-    @IBOutlet weak var timeTwoDatePicker: UIDatePicker!
-    private var timeOneTitleIsHidden = false
-    private var timeTwoTitleIsHidden = false
-    private var timeThreeTitleIsHidden = false
-    private var timePickerOneIsHidden = false
-    private var timePickerTwoIsHidden = false
-    private var timePickerThreeIsHidden = false
-    @IBOutlet weak var timeThreeDatePicker: UIDatePicker!
-    @IBOutlet weak var timeOneDetailLabel: UILabel!
-    @IBOutlet weak var timeTwoDetailLabel: UILabel!
+    
+    @IBOutlet weak var timeOneDatePicker : UIDatePicker!
+    @IBOutlet weak var timeTwoDatePicker : UIDatePicker!
+    fileprivate var timeOneTitleIsHidden    = false
+    fileprivate var timeTwoTitleIsHidden    = false
+    fileprivate var timeThreeTitleIsHidden  = false
+    fileprivate var timePickerOneIsHidden   = false
+    fileprivate var timePickerTwoIsHidden   = false
+    fileprivate var timePickerThreeIsHidden = false
+    @IBOutlet weak var timeThreeDatePicker:  UIDatePicker!
+    @IBOutlet weak var timeOneDetailLabel:   UILabel!
+    @IBOutlet weak var timeTwoDetailLabel:   UILabel!
     @IBOutlet weak var timeThreeDetailLabel: UILabel!
-    let timeFormat: NSDateFormatter = NSDateFormatter()
-    var timeDictionary: Dictionary<String, String> = [:]
-    var hourMinuteDictionary: Dictionary<String, [Int]> = [:]
+    let timeFormat:           DateFormatter = DateFormatter()
+    var newTimeDictionary:    Dictionary<String, Date> = [:]
+    let dateFormat = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,19 +37,19 @@ class TimesPerDayTableViewController: UITableViewController {
         toggleTimeThreePicker()
         
         // Set the datepicker modes to time
-        timeOneDatePicker.datePickerMode = UIDatePickerMode.Time
-        timeTwoDatePicker.datePickerMode = UIDatePickerMode.Time
-        timeThreeDatePicker.datePickerMode = UIDatePickerMode.Time
+        timeOneDatePicker.datePickerMode   = UIDatePickerMode.time
+        timeTwoDatePicker.datePickerMode   = UIDatePickerMode.time
+        timeThreeDatePicker.datePickerMode = UIDatePickerMode.time
         
-        timeOneDetailLabel.text = ""
-        timeTwoDetailLabel.text = ""
-        timeThreeDetailLabel.text = ""
+        timeOneDetailLabel.text   = String()
+        timeTwoDetailLabel.text   = String()
+        timeThreeDetailLabel.text = String()
         
         // Set date pickers to initial values
         timeFormat.dateFormat = "h:mm a"
-        let defaultStartTime = timeFormat.dateFromString("7:00 AM")
-        timeOneDatePicker.date = defaultStartTime!
-        timeTwoDatePicker.date = defaultStartTime!
+        let defaultStartTime  = timeFormat.date(from: "7:00 AM")
+        timeOneDatePicker.date   = defaultStartTime!
+        timeTwoDatePicker.date   = defaultStartTime!
         timeThreeDatePicker.date = defaultStartTime!
         
     }
@@ -89,15 +90,15 @@ class TimesPerDayTableViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    @IBAction func timeOneDatePickerAction(sender: AnyObject) {
+    @IBAction func timeOneDatePickerAction(_ sender: AnyObject) {
         timeOneDatePickerChanged()
     }
 
-    @IBAction func timeTwoDatePickerAction(sender: AnyObject) {
+    @IBAction func timeTwoDatePickerAction(_ sender: AnyObject) {
         timeTwoDatePickerChanged()
     }
 
-    @IBAction func timeThreeDatePickerAction(sender: AnyObject) {
+    @IBAction func timeThreeDatePickerAction(_ sender: AnyObject) {
         timeThreeDatePickerChanged()
     }
 
@@ -106,34 +107,51 @@ class TimesPerDayTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if timePickerOneIsHidden && indexPath.section == 1 && indexPath.row == 1{
+        if timePickerOneIsHidden
+            && indexPath.section == 1
+            && indexPath.row == 1{
             return 0
         }
-        else if timeOneTitleIsHidden && indexPath.section == 1 && indexPath.row == 0{
+        else if timeOneTitleIsHidden
+            && indexPath.section == 1
+            && indexPath.row == 0{
             return 0
         }
-        else if timePickerTwoIsHidden && indexPath.section == 1 && indexPath.row == 3{
+        else if timePickerTwoIsHidden
+            && indexPath.section == 1
+            && indexPath.row == 3{
             return 0
         }
-        else if timeTwoTitleIsHidden && indexPath.section == 1 && indexPath.row == 2{
+        else if timeTwoTitleIsHidden
+            && indexPath.section == 1
+            && indexPath.row == 2{
             return 0
         }
-        else if timePickerThreeIsHidden && indexPath.section == 1 && indexPath.row == 5{
+        else if timePickerThreeIsHidden
+            && indexPath.section == 1
+            && indexPath.row == 5{
             return 0
         }
-        else if timeThreeTitleIsHidden && indexPath.section == 1 && indexPath.row == 4{
+        else if timeThreeTitleIsHidden
+            && indexPath.section == 1
+            && indexPath.row == 4{
             return 0
         }
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
     // Had a problem where the user has to rotate the picker because a date can not be formed from 
     // Just the string 7:00 AM
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2){
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0
+            && (indexPath.row == 0
+                || indexPath.row == 1
+                || indexPath.row == 2){
+            // Toggle checkmark
             toggleCheckmark(tableView, indexPath: indexPath)
+            
             if indexPath.row == 0{
                 toggleTimeOneTitle()
                 timeOneDetailLabel.text = "7:00 AM"
@@ -147,85 +165,114 @@ class TimesPerDayTableViewController: UITableViewController {
                 timeThreeDetailLabel.text = "7:00 AM"
             }
         }
-        else if indexPath.section == 1 && indexPath.row == 0{
+        else if indexPath.section == 1
+            &&  indexPath.row == 0{
             toggleTimeOnePicker()
         }
-        else if indexPath.section == 1 && indexPath.row == 2{
+        else if indexPath.section == 1
+            &&  indexPath.row == 2{
             toggleTimeTwoPicker()
         }
-        else if indexPath.section == 1 && indexPath.row == 4{
+        else if indexPath.section == 1
+            &&  indexPath.row == 4{
             toggleTimeThreePicker()
         }
-        else{
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // Toggle the checkmarks on the time cells
-    func toggleCheckmark(tableView: UITableView, indexPath: NSIndexPath){
+    func toggleCheckmark(_ tableView: UITableView, indexPath: IndexPath){
         // Get a cell and change the accessory type to a checkmark when clicked
-        let selection = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if selection?.accessoryType == UITableViewCellAccessoryType.None{
-            selection?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
-        else{
-            selection?.accessoryType = UITableViewCellAccessoryType.None
+        let selection = tableView.cellForRow(at: indexPath)
+        if let selectedCell = selection{
+            if(selectedCell.accessoryType == .checkmark){
+                selectedCell.accessoryType = .none
+            }
+            else{
+                selectedCell.accessoryType = .checkmark
+            }
         }
     }
     
-    func timeComponents(date: NSDate) -> NSDateComponents{
-        let calendar = NSCalendar.currentCalendar()
-        let dateComponents = calendar.components([.Hour, .Minute], fromDate: date)
-        return dateComponents
+    func generateNewDate(_ date: Date) -> Date{
+        let calendar = Calendar.current
+        let todayComponents = calendar
+                                .dateComponents([.month, .day, .year],
+                                                from: Date())
+        var dateComponents = calendar.dateComponents([.hour, .minute],
+                                                     from: date)
+        dateComponents.day   = todayComponents.day
+        dateComponents.month = todayComponents.month
+        dateComponents.year  = todayComponents.year
+        dateFormat.dateFormat = "MM/dd/yyyy h:mm:ss a"
+        let newDate = calendar.date(from: dateComponents)
+        let newDateAsString = dateFormat.string(from: newDate!)
+        print("New generated date -> \(newDateAsString)")
+        return newDate!
     }
     
     func timeOneDatePickerChanged(){
-        let timeOneComponents = timeComponents(timeOneDatePicker.date)
-        hourMinuteDictionary["Time One"] = [timeOneComponents.hour, timeOneComponents.minute]
-        let str = timeFormat.stringFromDate(timeOneDatePicker.date)
+        let timeOneDate = generateNewDate(timeOneDatePicker.date)
+        newTimeDictionary[Globals.timeOneKey] = timeOneDate
+        let str = timeFormat.string(from: timeOneDatePicker.date)
         timeOneDetailLabel.text = str
     }
     
     func timeTwoDatePickerChanged(){
-        let timeTwoComponents = timeComponents(timeTwoDatePicker.date)
-        hourMinuteDictionary["Time Two"] = [timeTwoComponents.hour, timeTwoComponents.minute]
-        let str = timeFormat.stringFromDate(timeTwoDatePicker.date)
+        let timeTwoDate = generateNewDate(timeTwoDatePicker.date)
+        newTimeDictionary[Globals.timeTwoKey] = timeTwoDate
+        let str = timeFormat.string(from: timeTwoDatePicker.date)
         timeTwoDetailLabel.text = str
     }
     
     func timeThreeDatePickerChanged(){
-        let timeThreeComponents = timeComponents(timeThreeDatePicker.date)
-        hourMinuteDictionary["Time Three"] = [timeThreeComponents.hour, timeThreeComponents.minute]
-        let str = timeFormat.stringFromDate(timeThreeDatePicker.date)
+        let timeThreeDate = generateNewDate(timeThreeDatePicker.date)
+        newTimeDictionary[Globals.timeThreeKey] = timeThreeDate
+        let str = timeFormat.string(from: timeThreeDatePicker.date)
         timeThreeDetailLabel.text = str
     }
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier! == "UnwindTimesPerDay"{
-            let destination = segue.destinationViewController as! MedicationStaticTableViewController
-            var times:String = ""
-            if (!timeOneDetailLabel.text!.isEmpty){
-                times += timeOneDetailLabel.text! + " "
-                timeDictionary["timeOne"] = timeOneDetailLabel.text!
+            let destination = segue.destination as! MedicationStaticTableViewController
+            var times:String = String()
+            
+            // Time One
+            if let timeOne = timeOneDetailLabel.text{
+                times += timeOne + " "
+                
+                if let timeOneDate = newTimeDictionary[Globals.timeOneKey]{
+                    print("Time Three Date -> \(timeOneDate)")
+                    Globals.timesDictionary[Globals.timeOneKey] = timeOneDate
+                }
             }
-            if (!timeTwoDetailLabel.text!.isEmpty){
-                times += timeTwoDetailLabel.text! + " "
-                timeDictionary["timeTwo"] = timeTwoDetailLabel.text!
+            // Time Two
+            if let timeTwo = timeTwoDetailLabel.text{
+                times += timeTwo + " "
+                
+                if let timeTwoDate = newTimeDictionary[Globals.timeTwoKey]{
+                    print("Time Two Date -> \(timeTwoDate)")
+                    Globals.timesDictionary[Globals.timeTwoKey] = timeTwoDate
+                }
             }
-            if (!timeThreeDetailLabel.text!.isEmpty){
-                times += timeThreeDetailLabel.text!
-                timeDictionary["timeThree"] = timeThreeDetailLabel.text!
+            // Time Three
+            if let timeThree = timeThreeDetailLabel.text{
+                times += timeThree
+                
+                if let timeThreeDate = newTimeDictionary[Globals.timeThreeKey]{
+                    print("Time Three Date -> \(timeThreeDate)")
+                    Globals.timesDictionary[Globals.timeThreeKey] = timeThreeDate
+                }
             }
             
-            destination.numberOfTimesRightDetail.text = times
-            destination.timesDictionary = timeDictionary
-            destination.hourMinuteDictionary = hourMinuteDictionary
+            // Trim the whitespaces before sending the string back
+            destination.numberOfTimesRightDetail.text = times.trimmingCharacters(in: .whitespaces)
         }
     }
 }

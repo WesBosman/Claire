@@ -9,8 +9,8 @@
 import UIKit
 
 class RepeatDaysTableViewController: UITableViewController {
-    var listOfDays = Set<String>()
-    var listOfDaysAsString: String = ""
+    var listOfDays:NSMutableOrderedSet =  NSMutableOrderedSet()
+    var listOfDaysAsString: String     =  String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,102 +23,86 @@ class RepeatDaysTableViewController: UITableViewController {
     }
     
     // This turns the checkmarks on or off
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selection = tableView.cellForRowAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selection = tableView.cellForRow(at: indexPath)
         let day = selection?.textLabel?.text
-        // IF the accessory type is a checkmark turn it off and remove the day from the set
-        if selection?.accessoryType == UITableViewCellAccessoryType.Checkmark{
-            selection!.accessoryType = UITableViewCellAccessoryType.None
-            if listOfDays.contains(day!){
-                let index = listOfDays.indexOf(day!)
-                listOfDays.removeAtIndex(index!)
-                print("Remove \(day!)")
+        
+        // Unwrap the Selected Cell
+        if let selectedCell = selection{
+            // If the accessory type is a checkmark then remove it
+            if selectedCell.accessoryType == .checkmark{
+                // Turn off the checkmark 
+                selectedCell.accessoryType = .none
+                // Remove the day from the set
+                if let selectedDay = day{
+                    let index = listOfDays.index(of: selectedDay)
+                        listOfDays.removeObject(at: index)
+                        print("Remove Selected Day: \(selectedDay)")
+                }
             }
-        }
-        // Otherwise turn the checkmark on and add the day to the set
-        else{
-            selection!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            listOfDays.insert(day!)
-            print("Add \(day!)")
-        }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-    }
-    
-    // Got these next two methods from Sandeep on stackoverflow
-    func formattedDaysInThisYear() -> [String] {
-        // create calendar
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        
-        // today's date
-        let today = NSDate()
-        let todayComponent = calendar.components([.Day, .Month, .Year], fromDate: today)
-        
-        // Range of Days
-        let till = NSCalendar.currentCalendar().dateWithEra(1, year: todayComponent.year + 1, month: todayComponent.month, day: todayComponent.day, hour: todayComponent.hour, minute: todayComponent.minute, second: todayComponent.second, nanosecond: todayComponent.nanosecond)!
-        
-        // Used to calculate a year in advance. 
-        let time = NSCalendar.currentCalendar().components(.Day, fromDate: today, toDate: till, options: .MatchNextTime)
-        
-        // range of dates to get day intervals from
-        let thisWeekDateRange = calendar.rangeOfUnit(.Day, inUnit: .Year , forDate:today)
-        
-        // date interval from today to beginning of week
-        let dayInterval = thisWeekDateRange.location - todayComponent.day
-        
-        // date for beginning day of this week, ie. this week's Sunday's date
-        let beginningOfWeek = calendar.dateByAddingUnit(.Day, value: dayInterval, toDate: today, options: .MatchNextTime)
-        
-        var formattedDays: [String] = []
-        
-        // This will let us calculate from todays date to a year in the future
-        let yearStartingToday = (time.day + 14)
-        
-        
-        for i in (todayComponent.day - 1) ... yearStartingToday{
-            // Get the strings of the days we want to set reminders for.
-            for dayz in listOfDays{
-                let date = calendar.dateByAddingUnit(.Day, value: i, toDate: beginningOfWeek!, options: .MatchNextTime)!
-                
-                // If the date starts with the day from our set then add it to formatted days
-                if (formatDate(date).hasPrefix(dayz)){
-                    formattedDays.append(formatDate(date))
-//                    print(formatDate(date))
+            // Otherwise turn the checkmark on and add
+            else{
+                // Add a checkmark and add a day to the set
+                if let selectedCell = selection{
+                    selectedCell.accessoryType = .checkmark
+                    if let selectedDay = day{
+                        // Insert a day into the set
+                        listOfDays.add(selectedDay)
+//                        addDayToList(day: selectedDay)
+                        print("Add Selected Day: \(selectedDay)")
+                    }
                 }
             }
         }
-        return formattedDays
+        // Deselect the cell
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
-    func formatDate(date: NSDate) -> String {
-        let format = "EEEE MMMM dd yyyy"
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = format
-        return formatter.stringFromDate(date)
+    func addDayToList(day:String){
+        switch(day){
+        case "Sunday":
+            listOfDays.insert(day, at: 0)
+        case "Monday":
+            listOfDays.insert(day, at: 1)
+        case "Tuesday":
+            listOfDays.insert(day, at: 2)
+        case "Wednesday":
+            listOfDays.insert(day, at: 3)
+        case "Thursday":
+            listOfDays.insert(day, at: 4)
+        case "Friday":
+            listOfDays.insert(day, at: 5)
+        case "Saturday":
+            listOfDays.insert(day, at: 6)
+        default:
+            return
+        }
     }
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-
+        
+        print("Segue Identifier : \(segue.identifier!)")
         if segue.identifier! == "UnwindAddDays"{
-            let destination = segue.destinationViewController as! MedicationStaticTableViewController
-            let daysOfWeek = formattedDaysInThisYear()
-            for day in daysOfWeek{
-                for newDay in listOfDays.reverse(){
-                    if day.hasPrefix(newDay){
-                        listOfDaysAsString += newDay + " "
-                        listOfDays.remove(newDay)
-                        listOfDays.insert(day)
-                    }
-                }
+            let destination = segue.destination as! MedicationStaticTableViewController
+            
+            for newDay in listOfDays{
+                // Create a medication day to store in database
+//                let medDay = MedicationDay()
+//                medDay.day = newDay as! String
+//                destination.medDays.append(medDay)
+                
+                // Update the right detail
+                listOfDaysAsString += "\(newDay) "
+                print("List of Days as String: \(listOfDaysAsString)")
             }
             
             destination.repeatRightDetail.text = listOfDaysAsString
-            destination.medicationDaysList = daysOfWeek
         }
     }
 }

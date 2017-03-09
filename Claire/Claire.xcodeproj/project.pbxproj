@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099561F4FCC9068B48F84C36 /* Pods_ClaireTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B0D5A2C9C6B7EEFD1CCB4D /* Pods_ClaireTests.framework */; };
+		920BD3508CDA9E76C10E0431 /* Pods_Claire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70FE09563BA04FDCA49E5E5C /* Pods_Claire.framework */; };
+		DE0A82A51E37E09200A9D529 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0A82A41E37E09200A9D529 /* UIScrollView+EmptyDataSet.m */; };
+		DE0A82A81E3825BA00A9D529 /* MedFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A82A71E3825BA00A9D529 /* MedFormViewController.swift */; };
+		DE2176621E6F084B0034A83A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE2176611E6F084B0034A83A /* Default-568h@2x.png */; };
 		DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */; };
 		DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */; };
 		DE2736281D069A12000583A7 /* AddReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */; };
 		DE2B1D7C1D0772AA0069761D /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */; };
 		DE2B1D7E1D07748C0069761D /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7D1D07748C0069761D /* MedicationCell.swift */; };
-		DE2B1D801D0798E30069761D /* MedicationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7F1D0798E30069761D /* MedicationItem.swift */; };
-		DE2B1D821D079A810069761D /* MedicationItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D811D079A810069761D /* MedicationItemList.swift */; };
-		DE2B1D861D085D2C0069761D /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */; };
+		DE2B1D801D0798E30069761D /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D7F1D0798E30069761D /* Medication.swift */; };
+		DE2B1D821D079A810069761D /* MedicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D811D079A810069761D /* MedicationList.swift */; };
 		DE2B1D891D09EDBD0069761D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2B1D871D09EDBD0069761D /* Main.storyboard */; };
-		DE2B1D8B1D09FE7F0069761D /* EditMedicationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */; };
 		DE2B1D8D1D0E5D380069761D /* AddMedicationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */; };
 		DE2B1D8F1D0E5D740069761D /* FirstUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */; };
 		DE62D0101D1C475F003ED54E /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62D00F1D1C475F003ED54E /* ResultCell.swift */; };
@@ -26,6 +29,11 @@
 		DE96B9551D00CD0700401332 /* ClaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B9541D00CD0700401332 /* ClaireTests.swift */; };
 		DE96B9601D00CD0700401332 /* ClaireUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B95F1D00CD0700401332 /* ClaireUITests.swift */; };
 		DE96B96E1D00D4B000401332 /* MedicationStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */; };
+		DEA67FBB1E71C2EA00F8560C /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA67FBA1E71C2EA00F8560C /* CalendarPickerViewController.swift */; };
+		DEA67FBD1E71D8B200F8560C /* IntervalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA67FBC1E71D8B200F8560C /* IntervalViewController.swift */; };
+		DEA67FBF1E71F97C00F8560C /* SORRY_SORRY.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEA67FBE1E71F97C00F8560C /* SORRY_SORRY.ttf */; };
+		DEA67FC11E71FA8800F8560C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA67FC01E71FA8800F8560C /* ChartViewController.swift */; };
+		ED43CBAB0C1194CA6D99E7F0 /* Pods_ClaireUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C98D073C2B21CF4775A5E8D /* Pods_ClaireUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +54,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11FA31CF160A94340916A936 /* Pods-ClaireUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClaireUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClaireUITests/Pods-ClaireUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1884B12DD1CEE94ABB43AC91 /* Pods-ClaireTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClaireTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClaireTests/Pods-ClaireTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2AC8120B7085FCFB2EEB9F44 /* Pods-Claire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Claire.release.xcconfig"; path = "Pods/Target Support Files/Pods-Claire/Pods-Claire.release.xcconfig"; sourceTree = "<group>"; };
+		42B46C208CC58FCAA36A00A6 /* Pods-ClaireUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClaireUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ClaireUITests/Pods-ClaireUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		68B6FA1B788885AF73DBC63D /* Pods-ClaireTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClaireTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ClaireTests/Pods-ClaireTests.release.xcconfig"; sourceTree = "<group>"; };
+		70FE09563BA04FDCA49E5E5C /* Pods_Claire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Claire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C98D073C2B21CF4775A5E8D /* Pods_ClaireUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClaireUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B0D5A2C9C6B7EEFD1CCB4D /* Pods_ClaireTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClaireTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE0A82A21E37E09100A9D529 /* Claire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Claire-Bridging-Header.h"; path = "Claire/Claire-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE0A82A31E37E09200A9D529 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../../Downloads/DZNEmptyDataSet-master 3/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		DE0A82A41E37E09200A9D529 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../../Downloads/DZNEmptyDataSet-master 3/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		DE0A82A71E3825BA00A9D529 /* MedFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MedFormViewController.swift; path = ../MedFormViewController.swift; sourceTree = "<group>"; };
+		DE2176611E6F084B0034A83A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimesPerDayTableViewController.swift; sourceTree = "<group>"; };
 		DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatDaysTableViewController.swift; sourceTree = "<group>"; };
 		DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderTableViewController.swift; sourceTree = "<group>"; };
 		DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
 		DE2B1D7D1D07748C0069761D /* MedicationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
-		DE2B1D7F1D0798E30069761D /* MedicationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationItem.swift; sourceTree = "<group>"; };
-		DE2B1D811D079A810069761D /* MedicationItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationItemList.swift; sourceTree = "<group>"; };
-		DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
+		DE2B1D7F1D0798E30069761D /* Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		DE2B1D811D079A810069761D /* MedicationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationList.swift; sourceTree = "<group>"; };
 		DE2B1D881D09EDBD0069761D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMedicationNavigationController.swift; sourceTree = "<group>"; };
 		DE2B1D8C1D0E5D380069761D /* AddMedicationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMedicationTest.swift; sourceTree = "<group>"; };
 		DE2B1D8E1D0E5D740069761D /* FirstUITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstUITest.swift; sourceTree = "<group>"; };
 		DE62D00F1D1C475F003ED54E /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
@@ -71,6 +90,11 @@
 		DE96B95F1D00CD0700401332 /* ClaireUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaireUITests.swift; sourceTree = "<group>"; };
 		DE96B9611D00CD0700401332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationStaticTableViewController.swift; sourceTree = "<group>"; };
+		DEA67FBA1E71C2EA00F8560C /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewController.swift; sourceTree = "<group>"; };
+		DEA67FBC1E71D8B200F8560C /* IntervalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalViewController.swift; sourceTree = "<group>"; };
+		DEA67FBE1E71F97C00F8560C /* SORRY_SORRY.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SORRY_SORRY.ttf; sourceTree = "<group>"; };
+		DEA67FC01E71FA8800F8560C /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		E4B321D2720AD14290660101 /* Pods-Claire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Claire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Claire/Pods-Claire.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920BD3508CDA9E76C10E0431 /* Pods_Claire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				099561F4FCC9068B48F84C36 /* Pods_ClaireTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,19 +118,91 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED43CBAB0C1194CA6D99E7F0 /* Pods_ClaireUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72416348176DFB410180C9BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4B321D2720AD14290660101 /* Pods-Claire.debug.xcconfig */,
+				2AC8120B7085FCFB2EEB9F44 /* Pods-Claire.release.xcconfig */,
+				1884B12DD1CEE94ABB43AC91 /* Pods-ClaireTests.debug.xcconfig */,
+				68B6FA1B788885AF73DBC63D /* Pods-ClaireTests.release.xcconfig */,
+				42B46C208CC58FCAA36A00A6 /* Pods-ClaireUITests.debug.xcconfig */,
+				11FA31CF160A94340916A936 /* Pods-ClaireUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB0C6A580F4DBA7B2E22A90F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70FE09563BA04FDCA49E5E5C /* Pods_Claire.framework */,
+				B0B0D5A2C9C6B7EEFD1CCB4D /* Pods_ClaireTests.framework */,
+				7C98D073C2B21CF4775A5E8D /* Pods_ClaireUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE0A829F1E37D95F00A9D529 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DE62D00F1D1C475F003ED54E /* ResultCell.swift */,
+				DE2B1D7D1D07748C0069761D /* MedicationCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		DE0A82A01E37D98700A9D529 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE2B1D811D079A810069761D /* MedicationList.swift */,
+				DE2B1D7F1D0798E30069761D /* Medication.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DE0A82A11E37D9C900A9D529 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE0A82A71E3825BA00A9D529 /* MedFormViewController.swift */,
+				DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */,
+				DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */,
+				DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */,
+				DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */,
+				DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */,
+				DEA67FBA1E71C2EA00F8560C /* CalendarPickerViewController.swift */,
+				DEA67FBC1E71D8B200F8560C /* IntervalViewController.swift */,
+				DEA67FC01E71FA8800F8560C /* ChartViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DE0A82A61E37FDD400A9D529 /* EmptyTableView */ = {
+			isa = PBXGroup;
+			children = (
+				DE0A82A31E37E09200A9D529 /* UIScrollView+EmptyDataSet.h */,
+				DE0A82A41E37E09200A9D529 /* UIScrollView+EmptyDataSet.m */,
+				DE0A82A21E37E09100A9D529 /* Claire-Bridging-Header.h */,
+			);
+			name = EmptyTableView;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		DE96B9331D00CD0700401332 = {
 			isa = PBXGroup;
 			children = (
+				DE2176611E6F084B0034A83A /* Default-568h@2x.png */,
 				DE96B93E1D00CD0700401332 /* Claire */,
 				DE96B9531D00CD0700401332 /* ClaireTests */,
 				DE96B95E1D00CD0700401332 /* ClaireUITests */,
 				DE96B93D1D00CD0700401332 /* Products */,
+				72416348176DFB410180C9BB /* Pods */,
+				BB0C6A580F4DBA7B2E22A90F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,17 +220,11 @@
 			isa = PBXGroup;
 			children = (
 				DE96B93F1D00CD0700401332 /* AppDelegate.swift */,
-				DE62D00F1D1C475F003ED54E /* ResultCell.swift */,
-				DE2B1D7D1D07748C0069761D /* MedicationCell.swift */,
-				DE2736271D069A12000583A7 /* AddReminderTableViewController.swift */,
-				DE2B1D8A1D09FE7F0069761D /* EditMedicationNavigationController.swift */,
-				DE2B1D7F1D0798E30069761D /* MedicationItem.swift */,
-				DE2B1D811D079A810069761D /* MedicationItemList.swift */,
-				DE2B1D7B1D0772AA0069761D /* MedicationTableViewController.swift */,
-				DE96B96D1D00D4B000401332 /* MedicationStaticTableViewController.swift */,
-				DE2736211D034751000583A7 /* TimesPerDayTableViewController.swift */,
-				DE2736231D035338000583A7 /* RepeatDaysTableViewController.swift */,
-				DE2B1D851D085D2C0069761D /* ResultTableViewController.swift */,
+				DEA67FBE1E71F97C00F8560C /* SORRY_SORRY.ttf */,
+				DE0A82A11E37D9C900A9D529 /* ViewControllers */,
+				DE0A82A61E37FDD400A9D529 /* EmptyTableView */,
+				DE0A82A01E37D98700A9D529 /* Model */,
+				DE0A829F1E37D95F00A9D529 /* Cells */,
 				DE96B9461D00CD0700401332 /* Assets.xcassets */,
 				DE2B1D871D09EDBD0069761D /* Main.storyboard */,
 				DE96B9481D00CD0700401332 /* LaunchScreen.storyboard */,
@@ -168,9 +260,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE96B9641D00CD0700401332 /* Build configuration list for PBXNativeTarget "Claire" */;
 			buildPhases = (
+				39D2B3EFEAA8EEA49CD1552A /* [CP] Check Pods Manifest.lock */,
 				DE96B9381D00CD0700401332 /* Sources */,
 				DE96B9391D00CD0700401332 /* Frameworks */,
 				DE96B93A1D00CD0700401332 /* Resources */,
+				A0C1F384A5AF718783E35B47 /* [CP] Embed Pods Frameworks */,
+				4B8600289F9011132F7181DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,9 +280,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE96B9671D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireTests" */;
 			buildPhases = (
+				4FD48AB780493A26C639AF6B /* [CP] Check Pods Manifest.lock */,
 				DE96B94C1D00CD0700401332 /* Sources */,
 				DE96B94D1D00CD0700401332 /* Frameworks */,
 				DE96B94E1D00CD0700401332 /* Resources */,
+				15AA718A2445F65567543814 /* [CP] Embed Pods Frameworks */,
+				1AB2885894299967D8D040A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,9 +301,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE96B96A1D00CD0700401332 /* Build configuration list for PBXNativeTarget "ClaireUITests" */;
 			buildPhases = (
+				E0A5E78843F0B75886225B8E /* [CP] Check Pods Manifest.lock */,
 				DE96B9571D00CD0700401332 /* Sources */,
 				DE96B9581D00CD0700401332 /* Frameworks */,
 				DE96B9591D00CD0700401332 /* Resources */,
+				564CC5CD0833A6A2267C22D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,19 +324,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Wes Bosman";
 				TargetAttributes = {
 					DE96B93B1D00CD0700401332 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = GV7EE9PX98;
+						LastSwiftMigration = 0800;
 					};
 					DE96B94F1D00CD0700401332 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = DE96B93B1D00CD0700401332;
 					};
 					DE96B95A1D00CD0700401332 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = DE96B93B1D00CD0700401332;
 					};
 				};
@@ -267,8 +370,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2B1D891D09EDBD0069761D /* Main.storyboard in Resources */,
+				DE2176621E6F084B0034A83A /* Default-568h@2x.png in Resources */,
 				DE96B94A1D00CD0700401332 /* LaunchScreen.storyboard in Resources */,
 				DE96B9471D00CD0700401332 /* Assets.xcassets in Resources */,
+				DEA67FBF1E71F97C00F8560C /* SORRY_SORRY.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +393,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15AA718A2445F65567543814 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClaireTests/Pods-ClaireTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1AB2885894299967D8D040A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClaireTests/Pods-ClaireTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39D2B3EFEAA8EEA49CD1552A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4B8600289F9011132F7181DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Claire/Pods-Claire-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FD48AB780493A26C639AF6B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		564CC5CD0833A6A2267C22D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ClaireUITests/Pods-ClaireUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0C1F384A5AF718783E35B47 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Claire/Pods-Claire-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0A5E78843F0B75886225B8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE96B9381D00CD0700401332 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -295,16 +523,19 @@
 			files = (
 				DE2736281D069A12000583A7 /* AddReminderTableViewController.swift in Sources */,
 				DE2B1D7E1D07748C0069761D /* MedicationCell.swift in Sources */,
+				DEA67FBB1E71C2EA00F8560C /* CalendarPickerViewController.swift in Sources */,
+				DE0A82A81E3825BA00A9D529 /* MedFormViewController.swift in Sources */,
 				DE62D0101D1C475F003ED54E /* ResultCell.swift in Sources */,
-				DE2B1D861D085D2C0069761D /* ResultTableViewController.swift in Sources */,
+				DEA67FBD1E71D8B200F8560C /* IntervalViewController.swift in Sources */,
 				DE2736221D034751000583A7 /* TimesPerDayTableViewController.swift in Sources */,
-				DE2B1D801D0798E30069761D /* MedicationItem.swift in Sources */,
+				DE2B1D801D0798E30069761D /* Medication.swift in Sources */,
 				DE96B96E1D00D4B000401332 /* MedicationStaticTableViewController.swift in Sources */,
 				DE2736241D035338000583A7 /* RepeatDaysTableViewController.swift in Sources */,
 				DE2B1D7C1D0772AA0069761D /* MedicationTableViewController.swift in Sources */,
 				DE96B9401D00CD0700401332 /* AppDelegate.swift in Sources */,
-				DE2B1D8B1D09FE7F0069761D /* EditMedicationNavigationController.swift in Sources */,
-				DE2B1D821D079A810069761D /* MedicationItemList.swift in Sources */,
+				DE2B1D821D079A810069761D /* MedicationList.swift in Sources */,
+				DE0A82A51E37E09200A9D529 /* UIScrollView+EmptyDataSet.m in Sources */,
+				DEA67FC11E71FA8800F8560C /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +606,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -420,8 +653,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -440,82 +675,102 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		DE96B9651D00CD0700401332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4B321D2720AD14290660101 /* Pods-Claire.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Claire/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.Claire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Claire/Claire-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DE96B9661D00CD0700401332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AC8120B7085FCFB2EEB9F44 /* Pods-Claire.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Claire/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.Claire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Claire/Claire-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		DE96B9681D00CD0700401332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1884B12DD1CEE94ABB43AC91 /* Pods-ClaireTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ClaireTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Claire.app/Claire";
 			};
 			name = Debug;
 		};
 		DE96B9691D00CD0700401332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68B6FA1B788885AF73DBC63D /* Pods-ClaireTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = ClaireTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Claire.app/Claire";
 			};
 			name = Release;
 		};
 		DE96B96B1D00CD0700401332 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42B46C208CC58FCAA36A00A6 /* Pods-ClaireUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ClaireUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Claire;
 			};
 			name = Debug;
 		};
 		DE96B96C1D00CD0700401332 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11FA31CF160A94340916A936 /* Pods-ClaireUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = ClaireUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Wes.ClaireUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Claire;
 			};
 			name = Release;
