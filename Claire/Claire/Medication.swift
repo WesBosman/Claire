@@ -16,6 +16,8 @@ class MedicationDate: Object{
 class Medication: Object{
     dynamic var name: String             = String()
     dynamic var dosesPerDay: Int         = 0
+    dynamic var timesSkipped: Int        = 0
+    dynamic var timesTaken:   Int        = 0
     dynamic var timeOne: Date?           = nil
     dynamic var timeTwo: Date?           = nil
     dynamic var timeThree: Date?         = nil

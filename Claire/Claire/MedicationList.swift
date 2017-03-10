@@ -16,6 +16,61 @@ private let sharedMedicationInstance = MedicationList()
 class MedicationList {
     static let sharedInstance = sharedMedicationInstance
     
+    // Medication has been skipped
+    func medicationSkipped(item: Medication){
+        do{
+            let realm = try Realm()
+            
+            try realm.write {
+                // Object is in realm update it
+                if let med = realm.objects(Medication.self).first(where:
+                    {($0.uuid == item.uuid)}){
+                    
+                    // Found the object in realm update it 
+                    print("Found the medication in the skipped method")
+                    
+                    med.timesSkipped += 1
+                    
+                }
+                // Object is not in realm add it
+                else{
+                    print("Trying to create a new med item in skipped")
+                    item.timesSkipped = item.timesSkipped + 1
+                    realm.create(Medication.self,value:item,update:false)
+                }
+            }
+        }
+        catch let err as NSError{
+            print("Error skipping MedChart \(err.localizedDescription)")
+        }
+    }
+    
+    // Medication has been taken
+    func medicationTaken(item: Medication){
+        do{
+            let realm = try Realm()
+            
+            try realm.write {
+                // Object is in realm so update it
+                if let med = realm.objects(Medication.self).first(where:
+                    {($0.uuid == item.uuid)}){
+                    print("Found the medication in meds taken")
+                    med.timesTaken += 1
+                    
+                }
+                // Object is not in realm so create it
+                else{
+                    print("Trying to create a new item in meds taken")
+                    item.timesTaken = item.timesTaken + 1
+                    realm.create(Medication.self,value: item,update: false)
+                }
+            }
+        }
+        catch let err as NSError{
+            print("Error taking Med Chart \(err.localizedDescription)")
+        }
+    }
+    
     // Add to database
     func addMedicationToDb(item: Medication){
         

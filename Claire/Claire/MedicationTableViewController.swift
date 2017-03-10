@@ -106,9 +106,50 @@ class MedicationTableViewController:
         refreshList()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func takeButtonTapped(sender: UIButton){
+        print("Taken Button Tapped in Medication View Controller")
+        
+        let medication = meds[sender.tag]
+        print("Medication name - \(medication.name)")
+        
+        let alert = UIAlertController(title: "Alert", message: "Are you sure you have taken this medication today? \nMedication Name: \(medication.name)", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Yes", style: .default, handler: {(action) in
+            
+            // Add one to the number of times skipped
+            MedicationList.sharedInstance.medicationTaken(item: medication)
+            
+            // Going to have to get the medication item again
+            print("Medication times taken -> \(medication.timesTaken)")
+            
+        })
+        let no = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alert.addAction(yes)
+        alert.addAction(no)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func skipButtonTapped(sender: UIButton){
+        print("Skiped Button Tapped in Medication View Controller")
+        
+        let medication = meds[sender.tag]
+        print("Medication name - \(medication.name)")
+        
+        let alert = UIAlertController(title: "Alert", message: "Are you sure you want to skip taking this medication? \nMedication Name: \(medication.name)", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction) in
+            
+            // Add one to the number of times skipped
+            MedicationList.sharedInstance.medicationSkipped(item: medication)
+            
+            // Going to have to get the medication item again
+            print("Medication Times Skipped -> \(medication.timesSkipped)")
+            
+        })
+        let no = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alert.addAction(yes)
+        alert.addAction(no)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        
     }
 
     // MARK: - Table view data source
@@ -154,6 +195,11 @@ class MedicationTableViewController:
         cell.medicationTimes.text    = dateString
         cell.medicationReminder.text = reminderString
         cell.intervalLabel.text      = med.notificationRepeatString
+        cell.skippedButton.tag       = indexPath.row
+        cell.skippedButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
+        
+        cell.takenButton.tag         = indexPath.row
+        cell.takenButton.addTarget(self, action: #selector(takeButtonTapped), for: .touchUpInside)
         
         return cell
     }
@@ -173,7 +219,7 @@ class MedicationTableViewController:
             
             // Remove the medication item from the list and delete the row at the indexPath.
             let med = meds[indexPath.row]
-            MedicationList().removeMedicationInDb(med: med)
+            MedicationList.sharedInstance.removeMedicationInDb(med: med)
             meds.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

@@ -39,9 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Notification Title \(notification.alertTitle)")
         // Use BRYX Banners for in app notifications
         let banner = Banner()
-//        let bell = UIImage.fontAwesomeIcon(.bell, textColor: UIColor.orange, size: CGSize(width: 35, height: 35))
+        let bell = UIImage.fontAwesomeIcon(.bell, textColor: UIColor.orange, size: CGSize(width: 35, height: 35))
         banner.animationDuration = 4
-//        banner.imageView.image = bell
+        banner.imageView.image = bell
         banner.backgroundColor = UIColor.orange
         banner.textColor = UIColor.white
         banner.titleLabel.text = notification.alertTitle
